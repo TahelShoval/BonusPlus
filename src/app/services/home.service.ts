@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import Worker from '../classes/worker';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,11 @@ export class HomeService {
 
   constructor(private http:HttpClient) { }
 
-  getWorkers(): Observable<Worker[]> {
+  public getWorkers(): Observable<Worker[]> {
     return this.http.get<Worker[]>(`${this.url}GetAllWorkers`);
+  }
+
+  public getWorkerByUserPassword(): Observable<Worker> {
+    return this.http.get<Worker>(`${this.url}GetWorkerByUserPassword/{worker}`);
   }
 }

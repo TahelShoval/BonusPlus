@@ -1,0 +1,13 @@
+<div class="container row">
+    <div class="col">
+        <ul>
+            <li [routerLink]="['/SignIn/EmployeeEntry']" routerLinkActive="router-link-active">
+                כניסת עובדים</li>
+            <li [routerLink]="['/SignIn/ManagementSystem']" routerLinkActive="router-link-active">
+                מערכת ניהול</li>
+        </ul>
+    </div>
+    <div class="col">
+        <router-outlet></router-outlet>
+    </div>
+</div>

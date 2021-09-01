@@ -1,0 +1,28 @@
+.container{
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+li{
+    list-style: none;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 10px 30px;
+    border: 1px #52c8ee solid;
+    border-radius: 50px;
+    font-size: 20px;
+    background-color: #08376b;
+    width: 250px;
+    text-align: center;
+    color: #fff;
+}
+
+li:hover{
+    opacity: 0.8;
+}
+
+.col{
+    margin-top: -200px;
+}

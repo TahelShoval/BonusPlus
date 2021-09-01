@@ -1,0 +1,45 @@
+.container{
+    width: 400px;
+    height: 300px;
+    padding: 30px;
+    color: #08376b;
+}
+
+.submit{
+    border-radius: 50px;
+    background-color: #08376b;
+    border: 1px #52c8ee solid;
+    color: #fff;
+    height: 40px;
+    width: 200px;
+    font-size: 17px;
+    margin: 20px;
+    font: bold;
+}
+
+button:hover{
+    opacity: 0.8;
+
+}
+
+.form-field{
+    padding: 20px;
+}
+
+input{
+    width: 100%;
+}
+
+.forgot-password{
+    padding: 20px;
+}
+
+a{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+h1{
+    font: bold;
+}
+

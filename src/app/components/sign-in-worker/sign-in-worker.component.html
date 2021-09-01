@@ -1,0 +1,19 @@
+<div class="container text-center">
+  <h1>כניסת עובדים</h1>
+  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+    
+    <div class="form-field text-right">
+      <span>שם משתמש</span>
+      <input type="text" class="form-control" required [(ngModel)]="userName" name="name" #name="ngModel">
+    </div> 
+    <div class="form-field text-right">
+      <span>סיסמא</span>
+      <input type="text" class="form-control" required [(ngModel)]="password" name="password" #name="ngModel"
+        [type]="hide ? 'password' : 'text'">
+    </div>
+    <div class="forgot-password text-right">
+      <button (click)="openDialog()">?שכחת את הסיסמא</button>
+    </div>
+    <button class="submit" type="submit">התחברות</button>
+  </form>
+</div>

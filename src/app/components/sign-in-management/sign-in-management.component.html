@@ -1,0 +1,18 @@
+<div class="container text-center">
+    <h1>מערכת ניהול</h1>
+    <form>
+      <div class="form-field text-right">
+        <span>שם משתמש</span>
+        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <div class="form-field text-right">
+        <span>סיסמא</span>
+        <input type="text" class="form-control" aria-label="password" aria-describedby="basic-addon1"
+          [type]="hide ? 'password' : 'text'">
+      </div>
+      <div class="forgot-password text-right">
+        <button>?שכחת את הסיסמא</button>
+      </div>
+      <button class="submit" type="submit">התחברות</button>
+    </form>
+  </div>
