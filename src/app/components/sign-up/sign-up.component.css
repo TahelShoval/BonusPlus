@@ -1,19 +1,8 @@
 .container{
-    padding: 12px;
-}
-
-.form-field{
-    margin-top: 30px;
-    margin-bottom: 40px;
-}
-
-button:hover{
-    opacity: 0.8;
-}
-
-.close{
-    margin-top: -10px;
-    margin-left: -9px;
+    width: 400px;
+    height: 300px;
+    padding: 30px;
+    color: #08376b;
 }
 
 .submit{
@@ -28,6 +17,22 @@ button:hover{
     font: bold;
 }
 
+button:hover{
+    opacity: 0.8;
+}
+
+.form-field{
+    padding: 10px;
+}
+
+input{
+    width: 100%;
+}
+
+h1{
+    font: bold;
+}
+
 .help-block{
-    color: rgb(231, 14, 14);
+    color: rgb(231, 18, 18);
 }

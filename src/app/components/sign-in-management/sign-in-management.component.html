@@ -1,18 +1,26 @@
 <div class="container text-center">
+  <div class="body">
     <h1>מערכת ניהול</h1>
-    <form>
-      <div class="form-field text-right">
-        <span>שם משתמש</span>
-        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+    <form (ngSubmit)="onSubmit(signInManagement)" #signInManagement="ngForm">
+
+      <div class="form-field text-right" [class.has-error]="userName.invalid && userName.touched"
+        [class.has-success]="userName.valid">
+        <label for="name" class="control-label">שם משתמש</label>
+        <input type="text" class="form-control" ngModel required name="userName" #userName="ngModel">
+        <span class="help-block" *ngIf="userName.invalid && userName.touched">שדה חובה*</span>
       </div>
-      <div class="form-field text-right">
-        <span>סיסמא</span>
-        <input type="text" class="form-control" aria-label="password" aria-describedby="basic-addon1"
+
+      <div class="form-field text-right" [class.has-error]="password.invalid && password.touched"
+        [class.has-success]="password.valid">
+        <label for="password" class="control-label">סיסמא</label>
+        <input type="text" class="form-control" ngModel required name="password" #password="ngModel"
           [type]="hide ? 'password' : 'text'">
+        <span class="help-block" *ngIf="password.invalid && password.touched">שדה חובה*</span>
       </div>
       <div class="forgot-password text-right">
-        <button>?שכחת את הסיסמא</button>
+        <span class="forget-btn" (click)="openDialog()">?שכחת את הסיסמא</span>
       </div>
-      <button class="submit" type="submit">התחברות</button>
+      <button class="submit" value="send" type="submit">התחברות</button>
     </form>
   </div>
+</div>

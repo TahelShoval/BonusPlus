@@ -1,0 +1,45 @@
+<div class="container text-center">
+    <h1>הרשמה</h1>
+    <form [formGroup]="signUpForm">
+
+        <div class="form-field text-right">
+            <label for="company" class="control-label">שם חברה
+                <input class="form-control" type="text" formControlName="company" name="company" id="company">
+            </label>
+        </div>
+        <div *ngIf="">
+
+        </div>
+        <div class="form-field text-right">
+            <label for="name" class="control-label">שם מנהל
+                <input class="form-control" type="text" formControlName="name" name="name" id="name">
+            </label>
+        </div>
+        <div class="form-field text-right">
+            <label for="address" class="control-label">כתובת
+                <input class="form-control" type="text" formControlName="address" name="address" id="address">
+            </label>
+        </div>
+        <div class="form-field text-right">
+            <label for="phone" class="control-label">פלאפון
+                <input class="form-control" type="text" formControlName="phone" name="phone" id="phone">
+            </label>
+        </div>
+        <div class="form-field text-right">
+            <label for="email" class="control-label">אימייל
+                <input class="form-control" type="email" formControlName="email" name="email" id="email">
+            </label>
+        </div>
+        <div class="form-field text-right">
+            <label for="userName" class="control-label">שם משתמש
+                <input class="form-control" type="userName" formControlName="userName" name="userName" id="userName">
+            </label>
+        </div>
+        <div class="form-field text-right">
+            <label for="password" class="control-label">סיסמא
+                <input class="form-control" type="password" formControlName="password" name="password" id="password">
+            </label>
+        </div>
+
+    </form>
+</div>

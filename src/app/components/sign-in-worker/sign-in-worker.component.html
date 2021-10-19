@@ -1,19 +1,30 @@
 <div class="container text-center">
-  <h1>כניסת עובדים</h1>
-  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
-    
-    <div class="form-field text-right">
-      <span>שם משתמש</span>
-      <input type="text" class="form-control" required [(ngModel)]="userName" name="name" #name="ngModel">
-    </div> 
-    <div class="form-field text-right">
-      <span>סיסמא</span>
-      <input type="text" class="form-control" required [(ngModel)]="password" name="password" #name="ngModel"
-        [type]="hide ? 'password' : 'text'">
-    </div>
-    <div class="forgot-password text-right">
-      <button (click)="openDialog()">?שכחת את הסיסמא</button>
-    </div>
-    <button class="submit" type="submit">התחברות</button>
-  </form>
+  <div class="body">
+    <h1>כניסת עובדים</h1>
+    <form (ngSubmit)="onSubmit(signInWorker)" #signInWorker="ngForm">
+
+      <div class="form-field text-right">
+        <label for="name" class="control-label">שם משתמש</label>
+        <input type="text" class="form-control" ngModel required name="userName" #userName="ngModel">
+        <span class="help-block" *ngIf="userName.invalid && userName.touched">שדה חובה*</span>
+      </div>
+
+      <div class="form-field text-right">
+        <label for="password" class="control-label">סיסמא</label>
+        <input type="text" class="form-control" ngModel required name="password" #password="ngModel"
+          [type]="hide ? 'password' : 'text'">
+        <span class="help-block" *ngIf="password.invalid && password.touched">שדה חובה*</span>
+      </div>
+      <div class="forgot-password text-right">
+        <span class="forget-btn" (click)="openDialog()">?שכחת את הסיסמא</span>
+      </div>
+      <button class="submit" value="send" type="submit">התחברות</button>
+      <div class="alert alert-danger" role="alert" *ngIf="isFormInvalid">
+        מלא את כל השדות
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="areCredentialsInvalid">
+        שם משתמש או סיסמא לא נכונים
+      </div>
+    </form>
+  </div>
 </div>

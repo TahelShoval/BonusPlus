@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http';
@@ -14,6 +13,7 @@ import { SignInManagementComponent } from './components/sign-in-management/sign-
 import { FormsModule } from '@angular/forms';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 
 @NgModule({
@@ -25,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SignInWorkerComponent,
     SignInManagementComponent,
     ForgetPasswordComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,   
   ],
   providers: [],
   bootstrap: [AppComponent]

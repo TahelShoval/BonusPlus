@@ -5,8 +5,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatDividerModule} from '@angular/material/divider';
 
-const materialModules = [MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatDialogModule];
+const materialModules = [
+  MatIconModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatDialogModule,
+  MatMenuModule,
+  MatDividerModule];
 
 @NgModule({
   declarations: [],

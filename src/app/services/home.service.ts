@@ -11,11 +11,11 @@ export class HomeService {
 
   constructor(private http:HttpClient) { }
 
-  public getWorkers(): Observable<Worker[]> {
+  public getAllWorkers(): Observable<Worker[]> {
     return this.http.get<Worker[]>(`${this.url}GetAllWorkers`);
   }
 
-  public getWorkerByUserPassword(): Observable<Worker> {
-    return this.http.get<Worker>(`${this.url}GetWorkerByUserPassword/{worker}`);
+  public getWorkerByUserName(): Observable<Worker> {
+    return this.http.get<Worker>(`${this.url}GetWorkerByUserPassword/{userName}`);
   }
 }
