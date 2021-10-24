@@ -1,15 +1,13 @@
 <div class="container text-center">
     <h1>הרשמה</h1>
-    <form [formGroup]="signUpForm">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm)">
 
         <div class="form-field text-right">
             <label for="company" class="control-label">שם חברה
                 <input class="form-control" type="text" formControlName="company" name="company" id="company">
             </label>
         </div>
-        <div *ngIf="">
-
-        </div>
+        
         <div class="form-field text-right">
             <label for="name" class="control-label">שם מנהל
                 <input class="form-control" type="text" formControlName="name" name="name" id="name">
@@ -40,6 +38,7 @@
                 <input class="form-control" type="password" formControlName="password" name="password" id="password">
             </label>
         </div>
+        <button class="submit" value="send" type="submit">הירשם</button>
 
     </form>
 </div>

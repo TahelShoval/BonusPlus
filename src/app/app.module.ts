@@ -14,6 +14,10 @@ import { FormsModule } from '@angular/forms';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { CompaniesComponent } from './components/companies/companies.component';
+import { WorkersComponent } from './components/workers/workers.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 @NgModule({
@@ -26,6 +30,10 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     SignInManagementComponent,
     ForgetPasswordComponent,
     SignUpComponent,
+    CompaniesComponent,
+    WorkersComponent,
+    AboutUsComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
