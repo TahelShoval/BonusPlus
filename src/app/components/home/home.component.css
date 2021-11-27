@@ -1,0 +1,15 @@
+p.home{
+    padding: 5%;
+    font-size: 125%;
+}
+    
+a.a{
+    direction: rtl;
+    text-align: right;
+    font-size: 100%;
+}
+
+p.customers{
+    padding: 5%;
+    font-size: 100%;
+}    

@@ -22,7 +22,7 @@ button:hover{
 }
 
 .form-field{
-    padding: 10px;
+    padding: 5px;
 }
 
 input{
@@ -35,4 +35,9 @@ h1{
 
 .help-block{
     color: rgb(231, 18, 18);
+}
+
+mat-form-field{
+    text-align: right;
+
 }

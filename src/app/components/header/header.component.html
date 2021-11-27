@@ -11,32 +11,46 @@
             <nav class="navbar navbar-expand-sm translate-middle">
                 <ul class="text-center navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" mat-button [routerLink]="['/contact']">יצירת קשר</a>
+                        <a href="#contact" class="nav-link" mat-button>יצירת קשר</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" mat-button [routerLink]="['/about-us']">מי אנחנו</a>
+                        <a href="#about-us" class="nav-link" mat-button>מי אנחנו</a>
                     </li>
                     <li>
-                        <a class="nav-link" mat-button [routerLink]="['/workers']">עובדים</a>
+                        <a href="#workers" class="nav-link" mat-button>עובדים</a>
                     </li>
                     <li>
-                        <a class="nav-link" mat-button [routerLink]="['/companies']">חברות וארגונים</a>
+                        <a href="#companies" class="nav-link" mat-button>חברות וארגונים</a>
                     </li>
                     <li>
-                        <a class="nav-link" mat-button [routerLink]="['/home']">דף הבית</a>
+                        <a href="#home" class="nav-link" mat-button>דף הבית</a>
                     </li>
                 </ul>
             </nav>
         </section>
         <section class="header-login col-3">
             <div class="login-container center">
-            <button  class="btn-login" mat-button mat-stroked-button [matMenuTriggerFor]="menu">התחברות</button>
-            <mat-menu class="menu" #menu="matMenu" xPosition="before">
-              <a mat-menu-item [routerLink]="['/SignIn/EmployeeEntry']">עובדים</a>
-              <a mat-menu-item [routerLink]="['/SignIn/ManagementSystem']">מערכת ניהול</a>
-            </mat-menu>
-        </div>
-            
+                <span mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger"
+                    (mouseenter)="menuTrigger.openMenu()">
+                    <i class="fas fa-user-circle"></i>
+                </span>
+
+
+
+                <mat-menu #menu="matMenu" [overlapTrigger]="false" class="menu" xPosition="before">
+                    <span (mouseleave)="menuTrigger.closeMenu()">
+                        <a *ngIf="!authenticationService.isAuthenticated" mat-menu-item [routerLink]="['/sign-in/Employee-entry']">עובדים</a>
+                        <a *ngIf="!authenticationService.isAuthenticated" mat-menu-item [routerLink]="['/sign-in/Management-system']">מערכת ניהול</a>
+                        <a *ngIf="!authenticationService.isAuthenticated" mat-menu-item [routerLink]="['/sign-up']">הרשמה</a>
+                        <a *ngIf="authenticationService.isAuthenticated" mat-menu-item [routerLink]="['/private-area-worker']">אזור אישי</a>
+                        <a *ngIf="authenticationService.isAuthenticated" mat-menu-item [routerLink]="['/private-area-management']">אזור אישי</a>
+                        <a *ngIf="authenticationService.isAuthenticated" (click)="logout()" mat-menu-item [routerLink]="['/home']">התנתקות</a>
+                    </span>
+
+                </mat-menu>
+
+            </div>
+
         </section>
     </div>
 </div>

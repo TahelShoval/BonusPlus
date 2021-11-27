@@ -23,9 +23,6 @@ export class EmployerService {
   }
 
   public createNewEmployer(employer: Employer) {
-    debugger;
-    return this.http.post<Employer>(`${this.url}PostEmployer`, employer).subscribe(x => {
-      alert("employer added");
-    })
+    return this.http.post<Employer>(`${this.url}PostEmployer`, employer).subscribe(x => { })
   }
 }

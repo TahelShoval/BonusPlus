@@ -8,8 +8,6 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class HeaderComponent implements OnInit {
 
-  aaa="uygfyt"
-
   constructor(public authenticationService:AuthenticationService) { }
 
   ngOnInit(): void {

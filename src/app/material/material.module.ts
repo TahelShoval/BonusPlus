@@ -6,7 +6,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatStepperModule } from '@angular/material/stepper';
+
 
 const materialModules = [
   MatIconModule,
@@ -15,7 +17,8 @@ const materialModules = [
   MatInputModule,
   MatDialogModule,
   MatMenuModule,
-  MatDividerModule];
+  MatDividerModule,
+  MatStepperModule];
 
 @NgModule({
   declarations: [],

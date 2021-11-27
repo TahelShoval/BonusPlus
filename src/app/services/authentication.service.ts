@@ -24,7 +24,7 @@ export class AuthenticationService {
       if (this.checkWorkerCredentials(signInData)) {
         this.isAuthenticated = true;
         this.typeEntry = "worker";
-        this.router.navigate(['']);
+        this.router.navigate(['/private-area-worker']);
         console.log("worker");
         console.log(this.worker);
         return true;
@@ -38,7 +38,7 @@ export class AuthenticationService {
       if (this.checkEmployerCredentials(signInData)) {
         this.isAuthenticated = true;
         this.typeEntry = "employer";
-        this.router.navigate(['']);
+        this.router.navigate(['/private-area-management']);
         console.log("employer");
         console.log(this.employer);
         return true;
@@ -79,6 +79,7 @@ export class AuthenticationService {
 
   logout() {
     this.isAuthenticated = false;
-    this.router.navigate(['']);
+    this.typeEntry = "";
+    this.router.navigate(['/home']);
   }
 }

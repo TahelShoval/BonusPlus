@@ -18,6 +18,11 @@ import { CompaniesComponent } from './components/companies/companies.component';
 import { WorkersComponent } from './components/workers/workers.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { PrivateAreaWorkerComponent } from './components/private-area-worker/private-area-worker.component';
+import { PrivateAreaManagementComponent } from './components/private-area-management/private-area-management.component';
+import { PersonalBenefitsComponent } from './components/personal-benefits/personal-benefits.component';
+import { BenefitsUsedComponent } from './components/benefits-used/benefits-used.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 
 @NgModule({
@@ -34,6 +39,11 @@ import { ContactComponent } from './components/contact/contact.component';
     WorkersComponent,
     AboutUsComponent,
     ContactComponent,
+    PrivateAreaWorkerComponent,
+    PrivateAreaManagementComponent,
+    PersonalBenefitsComponent,
+    BenefitsUsedComponent,
+    MainPageComponent,
   ],
   imports: [
     BrowserModule,

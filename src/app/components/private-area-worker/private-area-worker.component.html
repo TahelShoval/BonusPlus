@@ -1,0 +1,14 @@
+<div class="container row">
+    <div class="l-col-12 text-center">
+        <h1>כותרת</h1>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="col-9">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="side-nav col-3" text-right>
+        <a mat-menu-item [routerLink]="['/private-area-worker/personalBenefits']">כל ההטבות</a>
+        <a mat-menu-item [routerLink]="['/private-area-worker/benefitsUsed']">הטבות שמימשתי</a>
+        <a mat-menu-item [routerLink]="">הטבות שאהבתי</a>
+    </div>
+</div>
