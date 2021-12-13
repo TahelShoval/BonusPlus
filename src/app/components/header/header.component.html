@@ -39,12 +39,18 @@
 
                 <mat-menu #menu="matMenu" [overlapTrigger]="false" class="menu" xPosition="before">
                     <span (mouseleave)="menuTrigger.closeMenu()">
-                        <a *ngIf="!authenticationService.isAuthenticated" mat-menu-item [routerLink]="['/sign-in/Employee-entry']">עובדים</a>
-                        <a *ngIf="!authenticationService.isAuthenticated" mat-menu-item [routerLink]="['/sign-in/Management-system']">מערכת ניהול</a>
-                        <a *ngIf="!authenticationService.isAuthenticated" mat-menu-item [routerLink]="['/sign-up']">הרשמה</a>
-                        <a *ngIf="authenticationService.isAuthenticated" mat-menu-item [routerLink]="['/private-area-worker']">אזור אישי</a>
-                        <a *ngIf="authenticationService.isAuthenticated" mat-menu-item [routerLink]="['/private-area-management']">אזור אישי</a>
-                        <a *ngIf="authenticationService.isAuthenticated" (click)="logout()" mat-menu-item [routerLink]="['/home']">התנתקות</a>
+                        <a *ngIf="!authenticationService.isAuthenticated" mat-menu-item
+                            [routerLink]="['/sign-in/Employee-entry']">עובדים</a>
+                        <a *ngIf="!authenticationService.isAuthenticated" mat-menu-item
+                            [routerLink]="['/sign-in/Management-system']">מערכת ניהול</a>
+                        <a *ngIf="!authenticationService.isAuthenticated" mat-menu-item
+                            [routerLink]="['/sign-up']">הרשמה</a>
+                        <a *ngIf="authenticationService.isAuthenticated && authenticationService.typeEntry == 'worker'"
+                            mat-menu-item [routerLink]="['/private-area-worker']">אזור אישי</a>
+                        <a *ngIf="authenticationService.isAuthenticated && authenticationService.typeEntry == 'employer'"
+                            mat-menu-item [routerLink]="['/private-area-management']">אזור אישי</a>
+                        <a *ngIf="authenticationService.isAuthenticated" (click)="logout()" mat-menu-item
+                            [routerLink]="['/home']">התנתקות</a>
                     </span>
 
                 </mat-menu>

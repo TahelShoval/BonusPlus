@@ -1,21 +1,33 @@
 <section id="contact">
     <div class="container">
-        <h1 dir="rtl">יצירת קשר</h1>
-        <p class="contact" dir="rtl">
+      <form class="con">
+        <div class="form-field text-right">
+            <label for="name" class="control-label">*:שם מלא</label>
+            <input type="text" class="form-control" ngModel required name="fullName" #fullName="ngModel">
+            <span class="help-block" *ngIf="fullName.invalid && fullName.touched">שדה חובה*</span>
+          </div>
+
+          <div class="form-field text-right">
+            <label for="name" class="control-label">*:שם העסק</label>
+            <input type="text" class="form-control" ngModel required name="busName" #busName="ngModel">
+            <span class="help-block" *ngIf="busName.invalid && busName.touched">שדה חובה*</span>
+          </div>
+
+          <div class="form-field text-right">
+            <label class="control-label">*:טלפון</label>
+            <input type="tel" class="form-control" ngModel required name="phone" #phone="ngModel">
+            <span class="help-block" *ngIf="phone.invalid && phone.touched">שדה חובה*</span>
+          </div>
+
+          <div class="form-field text-right">
+            <label class="control-label">:הודעה</label>
             <br>
-            שירות לקוחות
-            <br>
-            טל': 1-700-70-11-30
-            <br>
-            אימייל: bonus@gmail.com
-            <br>
-            <br>
-            הצטרפות חברות וארגונים
-            <br>
-            טל': 09-961-0600 שלוחה 1
-            <br>
-            פקס: 09-950-0751
-            <br>
-        </p>
-    </div>
+            <textarea id="mess" name="mess" rows="5" cols="33"></textarea>            
+          </div>
+          
+          <div class="form-field text-right">
+           <button dir="rtl" class="submit" value="send" type="submit">שלח</button>
+          </div>  
+        </form>
+      </div>
 </section>

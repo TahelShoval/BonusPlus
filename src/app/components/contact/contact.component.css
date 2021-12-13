@@ -1,0 +1,43 @@
+con{
+    margin-top:2%;
+    width: 400px;
+    height: 300px;
+}
+
+.container{
+    width: 320px;
+    align-items: right;
+}
+
+
+
+.submit{
+    border-radius: 50px;
+    background-color: #08376b;
+    border: 1px #52c8ee solid;
+    color: #fff;
+    height: 40px;
+    width: 200px;
+    font-size: 17px;
+    margin: 20px;
+    font: bold;
+}
+
+button:hover{
+    opacity: 0.8;
+}
+
+.form-field{
+    padding: 20px;
+
+
+}
+
+input{
+    width: 100%;
+}
+
+
+.help-block{
+    color: rgb(231, 18, 18);
+}

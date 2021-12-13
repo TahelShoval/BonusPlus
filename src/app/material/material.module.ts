@@ -8,7 +8,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatStepperModule } from '@angular/material/stepper';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
 
 const materialModules = [
   MatIconModule,
@@ -18,7 +19,9 @@ const materialModules = [
   MatDialogModule,
   MatMenuModule,
   MatDividerModule,
-  MatStepperModule];
+  MatStepperModule,
+  MatCardModule,
+  MatTableModule];
 
 @NgModule({
   declarations: [],

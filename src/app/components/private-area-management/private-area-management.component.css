@@ -10,3 +10,7 @@ h1{
     margin: 2rem;
     font-size: xx-large;
 }
+
+.side-nav{
+    height: 100vh;
+}

@@ -11,8 +11,8 @@ import Employer from '../classes/employer';
 })
 export class AuthenticationService {
 
-  private worker: Worker = new Worker();
-  private employer: Employer = new Employer();
+  public worker: Worker = new Worker();
+  public employer: Employer = new Employer();
   isAuthenticated = false;
   typeEntry = "";
 
@@ -24,7 +24,7 @@ export class AuthenticationService {
       if (this.checkWorkerCredentials(signInData)) {
         this.isAuthenticated = true;
         this.typeEntry = "worker";
-        this.router.navigate(['/private-area-worker']);
+        this.router.navigate(['/private-area-worker/personal-benefits']);
         console.log("worker");
         console.log(this.worker);
         return true;
@@ -38,7 +38,7 @@ export class AuthenticationService {
       if (this.checkEmployerCredentials(signInData)) {
         this.isAuthenticated = true;
         this.typeEntry = "employer";
-        this.router.navigate(['/private-area-management']);
+        this.router.navigate(['/private-area-management/personal-workers']);
         console.log("employer");
         console.log(this.employer);
         return true;
@@ -65,7 +65,6 @@ export class AuthenticationService {
   }
 
   private checkEmployerCredentials(signInData: SignInData): boolean {
-    debugger;
     return this.checkEmployerUserName(signInData.getUserName()) && this.checkEmployerPassword(signInData.getPassword());
   }
 
@@ -80,6 +79,6 @@ export class AuthenticationService {
   logout() {
     this.isAuthenticated = false;
     this.typeEntry = "";
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 }

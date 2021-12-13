@@ -1,0 +1,12 @@
+img{
+    width: 16rem;
+    inline-size: auto;
+    width: 100%;
+}
+
+.img-container{
+    height: 220px;
+}
+mat-card{
+    margin: 0.5rem;
+}

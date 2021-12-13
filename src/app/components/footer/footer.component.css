@@ -1,0 +1,44 @@
+.footer{
+    background-color: black;
+    width: 100%;
+    padding: 2rem;
+}
+
+
+.logo-footer{
+    padding-left: 70px;
+}
+img{
+    height: 100px;
+}
+
+.serve{
+    direction: rtl;
+    font-weight: bold;
+    font-size: 110%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+    color: white;  
+}
+
+.serve1{
+    direction: rtl;
+    font-weight: bold;
+    font-size: 110%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+    color: white;  
+  
+}
+
+a{
+    direction: rtl;
+    direction: rtl;
+    font-weight: bold;
+    font-size: 110%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    color: white;
+    text-decoration: none; 
+}
+
+.container{
+    margin: auto;
+}

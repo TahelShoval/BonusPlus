@@ -14,9 +14,6 @@ export class SignUpComponent implements OnInit {
   isLinear = false;
   isEditable = false;
 
-  firstFormGroup = new FormGroup({});
-  secondFormGroup = new FormGroup({});
-
   signUpForm = new FormGroup({});
   address = new Address();
   a = new Address();
@@ -26,12 +23,6 @@ export class SignUpComponent implements OnInit {
   isFormInvalid = false;
 
   ngOnInit(): void {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
-    });
 
     this.signUpForm = new FormGroup({
       'company': new FormControl("", Validators.required),
@@ -67,16 +58,11 @@ export class SignUpComponent implements OnInit {
     this.address.City = signUpForm.value.address.city;
     this.address.Street = signUpForm.value.address.street;
     this.address.ZipCode = signUpForm.value.address.zipCode;
-debugger
+
     this.addressService.createNewAddress(this.address).subscribe(x =>{
-
-
-debugger
-
 
     this.addressService.getAddressByZipCode(this.address.ZipCode).subscribe(res => {
       this.a = res;
-
 
       const employer = new Employer();
       employer.CompanyName = signUpForm.value.company;

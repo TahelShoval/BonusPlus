@@ -1,0 +1,16 @@
+.container{
+    width: 260px;
+    height: 100vh;
+    color: #08376b;
+    margin-right: 0rem;
+    padding-top: 2rem;
+}
+
+mat-form-field{
+    text-align: right;
+}
+
+.actions-container{
+    margin-right: 0rem;
+    width: 260px;
+}

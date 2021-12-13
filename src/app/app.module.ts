@@ -23,6 +23,12 @@ import { PrivateAreaManagementComponent } from './components/private-area-manage
 import { PersonalBenefitsComponent } from './components/personal-benefits/personal-benefits.component';
 import { BenefitsUsedComponent } from './components/benefits-used/benefits-used.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { AllBenefitsComponent } from './components/all-benefits/all-benefits.component';
+import { PersonalWorkersComponent } from './components/personal-workers/personal-workers.component';
+import { MyDetailsComponent } from './components/my-details/my-details.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 
 @NgModule({
@@ -44,6 +50,11 @@ import { MainPageComponent } from './components/main-page/main-page.component';
     PersonalBenefitsComponent,
     BenefitsUsedComponent,
     MainPageComponent,
+    AllBenefitsComponent,
+    PersonalWorkersComponent,
+    MyDetailsComponent,
+    FooterComponent,
+    DialogBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +63,8 @@ import { MainPageComponent } from './components/main-page/main-page.component';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule,   
+    ReactiveFormsModule,  
+    NgImageSliderModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

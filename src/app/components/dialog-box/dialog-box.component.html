@@ -1,0 +1,36 @@
+<div class="text-center">
+    <h1 mat-dialog-title><strong>{{actionName}}</strong></h1>
+    <div mat-dialog-content>
+        <div *ngIf="action != 'Delete'; else elseTemplate">
+            <mat-form-field>
+                <input placeholder="שם" matInput [(ngModel)]="local_data.WorkerName">
+            </mat-form-field>
+            <mat-form-field>
+                <input placeholder="תעודת זהות" matInput [(ngModel)]="local_data.WorkerID">
+            </mat-form-field>
+            <mat-form-field>
+                <input placeholder="דרגה" matInput [(ngModel)]="local_data.JobType">
+            </mat-form-field>
+            <mat-form-field>
+                <input placeholder="ותק" matInput [(ngModel)]="local_data.Seniority">
+            </mat-form-field>
+            <mat-form-field>
+                <input placeholder="מייל" matInput [(ngModel)]="local_data.Email">
+            </mat-form-field>
+            <mat-form-field>
+                <input placeholder="שם משתמש" matInput [(ngModel)]="local_data.WorkerUserName">
+            </mat-form-field>
+            <mat-form-field>
+                <input placeholder="סיסמא" matInput [(ngModel)]="local_data.WorkerPassword">
+            </mat-form-field>
+        </div>
+
+        <ng-template #elseTemplate>
+            ? האם למחוק את <b>{{local_data.WorkerName}}</b>
+        </ng-template>
+    </div>
+    <div class="row" mat-dialog-actions>
+        <button class="col" mat-button (click)="doAction()">{{actionName}}</button>
+        <button class="col" mat-button (click)="closeDialog()" mat-flat-button color="warn">סגירה</button>
+    </div>
+</div>

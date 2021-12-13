@@ -1,15 +1,15 @@
 <div class="container row">
     <div class="l-col-12 text-center">
-        <h1>כותרת</h1>
+        <h1>הפרטים שלי</h1>
     </div>
     <mat-divider></mat-divider>
     <div class="col-9">
         <router-outlet></router-outlet>
     </div>
     <div class="side-nav col-3" text-right>
-        <a mat-menu-item [routerLink]="">עובדים</a>
-        <a mat-menu-item [routerLink]="">כל ההטבות</a>
-        <a mat-menu-item [routerLink]="">הטבות שאהבתי</a> 
-        <a mat-menu-item [routerLink]="">הפרטים שלי</a>
+        <a mat-menu-item [routerLink]="['/private-area-management/personal-workers']">פרטי עובדים</a>
+        <a mat-menu-item [routerLink]="['/private-area-management/all-benefits']">כל ההטבות</a>
+        <!-- <a mat-menu-item [routerLink]="">הטבות שאהבתי</a>  -->
+        <a mat-menu-item [routerLink]="['/private-area-management/my-details']">הפרטים שלי</a>
     </div>
 </div>

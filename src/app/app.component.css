@@ -1,9 +1,9 @@
-div{
-    display:block;
-    position: relative;
+/* .app{
+
+} */
+
+.app-header{
     height: 100px;
 }
 
-body{
-    background-color: aquamarine;
-}
+

@@ -13,12 +13,19 @@ export class AddressService {
 
   constructor(private http: HttpClient) { }
 
-  public getAddressByZipCode(zipCode: number): Observable<any> {
-
+  public getAddressByZipCode(zipCode: string): Observable<any> {
     return this.http.get<Address>(`${this.url}GetAddressByZipCode/` + zipCode);
+  }
+
+  public getAddressById(id: number): Observable<Address> {
+    return this.http.get<Address>(`${this.url}GetAddressById/` + id);
   }
 
   public createNewAddress(address: Address): Observable<any> {
     return this.http.post<Address>(`${this.url}PostAddress`, address);
+  }
+
+  public updateAddress(address: Address) {
+    return this.http.put<Address>(`${this.url}PutAddress`, address);
   }
 }

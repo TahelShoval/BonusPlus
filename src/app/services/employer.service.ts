@@ -14,7 +14,6 @@ export class EmployerService {
   constructor(private http: HttpClient) { }
 
   public getEmployerByUserName(userName: string): Observable<Employer> {
-    debugger;
     return this.http.get<Employer>(`${this.url}GetEmployerByUserName/` + userName);
   }
 
@@ -23,6 +22,10 @@ export class EmployerService {
   }
 
   public createNewEmployer(employer: Employer) {
-    return this.http.post<Employer>(`${this.url}PostEmployer`, employer).subscribe(x => { })
+    return this.http.post<Employer>(`${this.url}PostEmployer`, employer).subscribe(x => { });
+  }
+
+  public updateEmployer(employer: Employer) {
+    return this.http.put<Employer>(`${this.url}PutEmployer`, employer);
   }
 }

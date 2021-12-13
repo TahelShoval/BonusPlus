@@ -1,11 +1,14 @@
+#companies{
+    background-color: white;
+}
 p.customerss{
     padding: 2%;
     font-size: 125%;
-    margin-top: 2%;   
-}
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
 
-img{
-    
+
+
 }
 
 .img-box{
@@ -14,3 +17,4 @@ img{
     margin: 0.5rem;
     padding: 20px;
 }
+
