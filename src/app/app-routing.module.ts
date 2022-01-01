@@ -20,14 +20,8 @@ import { WorkersComponent } from './components/workers/workers.component';
 
 const routes: Routes = [
   { path: "", component: MainPageComponent },
-  {
-    path: "sign-in",
-    component: SignInComponent,
-    children: [
-      { path: "Employee-entry", component: SignInWorkerComponent },
-      { path: "Management-system", component: SignInManagementComponent, }
-    ]
-  },
+  { path: "worker-entry", component: SignInWorkerComponent },
+  { path: "management-entry", component: SignInManagementComponent },
   { path: "home", component: HomeComponent },
   { path: "companies", component: CompaniesComponent },
   { path: "workers", component: WorkersComponent },

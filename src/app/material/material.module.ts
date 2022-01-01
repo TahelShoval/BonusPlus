@@ -10,6 +10,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
 
 const materialModules = [
   MatIconModule,
@@ -21,7 +22,8 @@ const materialModules = [
   MatDividerModule,
   MatStepperModule,
   MatCardModule,
-  MatTableModule];
+  MatTableModule,
+  MatTabsModule];
 
 @NgModule({
   declarations: [],

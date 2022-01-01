@@ -1,33 +1,36 @@
 <section id="contact">
-    <div class="container">
-      <form class="con">
-        <div class="form-field text-right">
-            <label for="name" class="control-label">*:שם מלא</label>
-            <input type="text" class="form-control" ngModel required name="fullName" #fullName="ngModel">
-            <span class="help-block" *ngIf="fullName.invalid && fullName.touched">שדה חובה*</span>
-          </div>
+  <div class="container text-center">
+    <h1>יצירת קשר</h1>
+    <form>
+      <div class="row">
 
-          <div class="form-field text-right">
-            <label for="name" class="control-label">*:שם העסק</label>
-            <input type="text" class="form-control" ngModel required name="busName" #busName="ngModel">
-            <span class="help-block" *ngIf="busName.invalid && busName.touched">שדה חובה*</span>
-          </div>
-
-          <div class="form-field text-right">
-            <label class="control-label">*:טלפון</label>
-            <input type="tel" class="form-control" ngModel required name="phone" #phone="ngModel">
-            <span class="help-block" *ngIf="phone.invalid && phone.touched">שדה חובה*</span>
-          </div>
-
-          <div class="form-field text-right">
-            <label class="control-label">:הודעה</label>
-            <br>
-            <textarea id="mess" name="mess" rows="5" cols="33"></textarea>            
-          </div>
-          
-          <div class="form-field text-right">
-           <button dir="rtl" class="submit" value="send" type="submit">שלח</button>
-          </div>  
-        </form>
+        <mat-form-field appearance="fill" class="col">
+          <mat-label>שם חברה</mat-label>
+          <input matInput>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill" class="col">
+          <mat-label>שם מלא</mat-label>
+          <input matInput>
+        </mat-form-field>
       </div>
+      <div class="row">
+        <mat-form-field appearance="fill" class="col">
+          <mat-label>טלפון</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col">
+          <mat-label>אימייל</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="fill" class="message">
+          <mat-label>הודעה</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button type="submit">שלח</button>
+    </form>
+  </div>
 </section>

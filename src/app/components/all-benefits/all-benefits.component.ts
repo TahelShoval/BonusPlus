@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import SuppliersBenefits from 'src/app/classes/suppliers-benefits';
+import { SuppliersBenefitsService } from 'src/app/services/suppliers-benefits.service';
 
 @Component({
   selector: 'app-all-benefits',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllBenefitsComponent implements OnInit {
 
-  constructor() { }
+  suppliersBenefits: SuppliersBenefits[] = [];
+
+  constructor(private suppliersBenefitsService: SuppliersBenefitsService) { }
 
   ngOnInit(): void {
+    this.suppliersBenefitsService.GetAllDetailsSuppliersBenefits().subscribe(res => { this.suppliersBenefits = res })
   }
-
 }

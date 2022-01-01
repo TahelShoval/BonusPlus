@@ -1,12 +1,26 @@
+.all-page{
+     background-color: #dddddd;
+     height: 88vh;
+}
+
 .container{
     margin: auto;
 }
 
 a{
     text-align: right;
+    font-family: Segoe UI; 
+    color: #1b1a1a; 
+    font: bold;   
+    font-size:18px ;
 }
 
 h1{
     margin: 2rem;
     font-size: xx-large;
+    font-family: Segoe UI;
+}
+
+mat-divider{
+    margin-bottom: 1.5rem;
 }

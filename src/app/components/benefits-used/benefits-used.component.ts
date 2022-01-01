@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import WorkerBenefits from 'src/app/classes/worker-benefits';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { SuppliersBenefitsService } from 'src/app/services/suppliers-benefits.service';
+import Worker from 'src/app/classes/worker';
+import { WorkersBenefitsService } from 'src/app/services/workers-benefits.service';
 
 @Component({
   selector: 'app-benefits-used',
@@ -12,13 +12,15 @@ export class BenefitsUsedComponent implements OnInit {
 
   workerBenefits: WorkerBenefits[] = [];
 
-  constructor(private suppliersBenefitsService: SuppliersBenefitsService,
-    private authenticationService: AuthenticationService) { }
+  constructor(private workersBenefitsService: WorkersBenefitsService) { }
 
   ngOnInit(): void {
-    this.suppliersBenefitsService.getSuppliersBenefitByWorkerId(this.authenticationService.worker.ID).subscribe(res => {
-      this.workerBenefits = res;
-    });
+    const workerString = localStorage.getItem('worker');
+    if (workerString) {
+      const workerObj: Worker = JSON.parse(workerString);
+      this.workersBenefitsService.getSuppliersBenefitByWorkerId(workerObj.ID).subscribe(res => {
+        this.workerBenefits = res;
+      });
+    }
   }
-
 }

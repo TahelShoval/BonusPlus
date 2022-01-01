@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import WorkerBenefits from 'src/app/classes/worker-benefits';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { SuppliersBenefitsService } from 'src/app/services/suppliers-benefits.service';
+import Worker from 'src/app/classes/worker';
+import { WorkersBenefitsService } from 'src/app/services/workers-benefits.service';
 
 @Component({
   selector: 'app-personal-benefits',
@@ -10,19 +9,21 @@ import { SuppliersBenefitsService } from 'src/app/services/suppliers-benefits.se
   styleUrls: ['./personal-benefits.component.css']
 })
 export class PersonalBenefitsComponent implements OnInit {
-  
 
   workerBenefits: WorkerBenefits[] = [];
-
-  constructor(
-    private suppliersBenefitsService: SuppliersBenefitsService,
-    private authenticationService: AuthenticationService) { }
+  counter = 0;
+  constructor(private workersBenefitsService: WorkersBenefitsService) { }
 
   ngOnInit(): void {
-    this.suppliersBenefitsService.getSuppliersBenefitByWorkerId(this.authenticationService.worker.ID).subscribe(res => {
-      this.workerBenefits = res;
-    });
-
+    const workerString = localStorage.getItem('worker');
+    if (workerString) {
+      const workerObj: Worker = JSON.parse(workerString);
+      this.workersBenefitsService.getSuppliersBenefitByWorkerId(workerObj.ID).subscribe(res => {
+        res.forEach(element => {
+          if (element.BenefitStatus == 0)
+            this.workerBenefits[this.counter++] = element;
+        });
+      });
+    }
   }
-
 }

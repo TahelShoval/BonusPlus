@@ -1,0 +1,48 @@
+html, body {
+    scroll-behavior: smooth;
+}
+
+#home{
+    height: 62vh;
+}
+
+h1{
+    font-size: 4rem;  
+    font-family: Segoe UI;
+    color:#fff;
+    margin-top: 20px;
+    font-weight: bold;
+} 
+
+.inline{
+    display: inline;
+}
+
+.name{
+    color: #e6b400;
+}
+
+p{
+    font-size: 1.5rem; 
+    font-family: Segoe UI;
+    color: #c29a08;
+    font-weight: bold;
+}
+
+.text-box{
+    padding-top: 9rem;
+    padding-left: 60rem;
+    direction: rtl;
+}
+
+mat-divider{
+    border-top-width:1px;
+    border-top-color: #a58306;
+}
+
+.divider{
+    width: 80px;
+    margin: 10px 420px;
+}
+
+

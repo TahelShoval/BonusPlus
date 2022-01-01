@@ -4,6 +4,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { WorkerService } from 'src/app/services/worker.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
+import Employer from 'src/app/classes/employer';
 
 @Component({
   selector: 'app-personal-workers',
@@ -17,11 +18,15 @@ export class PersonalWorkersComponent implements OnInit {
   displayedColumns: string[] = ['action', 'WorkerPassword', 'WorkerUserName', 'Email', 'Seniority', 'JobType', 'WorkerID', 'WorkerName'];
   dataSource: any;
   worker: Worker = new Worker();
+  employer: Employer = new Employer();
 
-  constructor(private workerService: WorkerService, private authenticationService: AuthenticationService, public dialog: MatDialog) { }
+  constructor(private workerService: WorkerService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.workerService.getWorkersByEmployerId(this.authenticationService.employer.EmployerID).subscribe(res => {
+    const employer = localStorage.getItem('employer');
+    if (employer)
+      this.employer = JSON.parse(employer);
+    this.workerService.getWorkersByEmployerId(this.employer.EmployerID).subscribe(res => {
       this.workers = res;
       console.log(this.workers);
       this.dataSource = [...this.workers];
@@ -49,7 +54,7 @@ export class PersonalWorkersComponent implements OnInit {
   addRowData(row_obj: Worker) {
     debugger;
     this.worker.ID = 0;
-    this.worker.EmployerID = this.authenticationService.employer.EmployerID;
+    this.worker.EmployerID = this.employer.EmployerID;
     this.worker.WorkerName = row_obj.WorkerName;
     this.worker.WorkerID = row_obj.WorkerID;
     this.worker.JobType = row_obj.JobType;

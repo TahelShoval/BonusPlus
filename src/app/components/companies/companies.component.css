@@ -1,20 +1,34 @@
+html, body {
+    scroll-behavior: smooth;
+}
 #companies{
-    background-color: white;
+    height: 62vh;
+    z-index: 1;
+    background-color: #312e2f;
 }
-p.customerss{
-    padding: 2%;
-    font-size: 125%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+h1{
+    font-size: 1.8rem;  
+    font-family: Segoe UI;
+    color: #e6b400;
+    padding-top: 100px;
     font-weight: bold;
-
-
-
+    padding-bottom: 30px;
 }
 
-.img-box{
-    width: 250px;
-    height: 200px;
-    margin: 0.5rem;
-    padding: 20px;
+button{
+    margin-top: 50px;
+    width:180px;
+    background-color:#e6b400;
+    height: 50px;
+    font-size: 1.4rem; 
+    font-weight: bold;
+    color: #1b1a1a;
+    transition: 0.2s ease-in-out;
 }
+
+button:hover{
+    font-size: 1.6rem;
+}
+
 

@@ -1,43 +1,56 @@
-con{
-    margin-top:2%;
-    width: 400px;
-    height: 300px;
+html, body {
+    scroll-behavior: smooth;
+}
+
+#contact{
+    height: 62vh;
+    background-color: #999395;
 }
 
 .container{
-    width: 320px;
+    width: 800px;
     align-items: right;
 }
 
-
-
-.submit{
-    border-radius: 50px;
-    background-color: #08376b;
-    border: 1px #52c8ee solid;
-    color: #fff;
-    height: 40px;
-    width: 200px;
-    font-size: 17px;
-    margin: 20px;
-    font: bold;
+h1{
+    font-size: 2.5rem;
+    font-family: Segoe UI;
+    color: #e6b400;
+    padding-top: 50px;
+    font-weight: bold;
 }
 
-button:hover{
-    opacity: 0.8;
+mat-form-field{
+    text-align: right;
 }
 
-.form-field{
-    padding: 20px;
-
-
+mat-label{
+    font-family: Segoe UI; 
+    color: #e6b400;    
+    font-size: 1rem;  
 }
 
 input{
-    width: 100%;
+    font-family: Segoe UI; 
+    color: #fff;    
+    font-size: 1rem; 
 }
 
+form{
+    padding-top: 30px;
+}
 
-.help-block{
-    color: rgb(231, 18, 18);
+button{
+    margin-top: 20px;
+    font-family: Segoe UI; 
+    color: #1b1a1a;    
+    font-size: 1.2rem;
+    background-color: #e6b400; 
+    font-weight: bold; 
+    width: 200px;
+    transition: 0.2s ease-in-out;
+}
+
+button:hover{ 
+    font-size: 1.4rem;
 }

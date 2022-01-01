@@ -1,30 +1,41 @@
-<div class="container text-center">
-  <div class="body">
-    <h1>כניסת עובדים</h1>
-    <form (ngSubmit)="onSubmit(signInWorker)" #signInWorker="ngForm">
+<div class="form-container text-center">
 
-      <div class="form-field text-right">
-        <label for="name" class="control-label">שם משתמש</label>
-        <input type="text" class="form-control" ngModel required name="userName" #userName="ngModel">
-        <span class="help-block" *ngIf="userName.invalid && userName.touched">שדה חובה*</span>
-      </div>
+  <h1>התחברות</h1>
+  <h2>-עובדים-</h2>
 
-      <div class="form-field text-right">
-        <label for="password" class="control-label">סיסמא</label>
-        <input type="text" class="form-control" ngModel required name="password" #password="ngModel"
-          [type]="hide ? 'password' : 'text'">
-        <span class="help-block" *ngIf="password.invalid && password.touched">שדה חובה*</span>
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit(signInForm)">
+    <div class="container row">
+
+      <h3 class="text-right">כניסה לחשבון האישי</h3>
+
+      <mat-form-field appearance="fill" hideRequiredMarker class="col">
+        <mat-label>שם משתמש</mat-label>
+        <input matInput formControlName="userName" name="userName">
+        <mat-error>{{getUserNameError()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" hideRequiredMarker class="col">
+        <mat-label>סיסמא</mat-label>
+        <input matInput formControlName="password" name="password" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error>{{getPasswordError()}}</mat-error>
+      </mat-form-field>
+
+      <div class="forgot-container text-right">
+        <a (click)="openDialog()">?שכחת את הסיסמא</a>
       </div>
-      <div class="forgot-password text-right">
-        <span class="forget-btn" (click)="openDialog()">?שכחת את הסיסמא</span>
-      </div>
-      <button class="submit" value="send" type="submit">התחברות</button>
-      <div class="alert alert-danger" role="alert" *ngIf="isFormInvalid">
-        מלא את כל השדות
-      </div>
-      <div class="alert alert-danger" role="alert" *ngIf="areCredentialsInvalid">
-        שם משתמש או סיסמא שגויים
-      </div>
-    </form>
-  </div>
+    </div>
+
+    <button mat-raised-button class="submit" value="send" type="submit">התחברות</button>
+
+    <div class="alert" role="alert" *ngIf="isFormInvalid">
+      מלא את כל השדות
+    </div>
+    <div class="alert" role="alert" *ngIf="areCredentialsInvalid">
+      שם משתמש או סיסמא שגויים
+    </div>
+  </form>
 </div>

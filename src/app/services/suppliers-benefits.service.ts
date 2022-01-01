@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import WorkerBenefits from '../classes/worker-benefits';
+import SuppliersBenefits from '../classes/suppliers-benefits';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SuppliersBenefitsService {
-  url: string = `https://localhost:44357/api/WorkersBenefits/`;
+  url: string = `https://localhost:44357/api/SuppliersBenefits/`;
 
   constructor(private http:HttpClient) { }
 
-  public getSuppliersBenefitByWorkerId(workerId: number): Observable<WorkerBenefits[]> {
-    return this.http.get<WorkerBenefits[]>(`${this.url}GetWorkersBenefitByWorkerId/` + workerId);
+  public GetAllDetailsSuppliersBenefits(): Observable<SuppliersBenefits[]> {
+    debugger;
+    return this.http.get<SuppliersBenefits[]>(`${this.url}GetAllDetailsSuppliersBenefits`);
   }
 }

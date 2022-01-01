@@ -16,41 +16,55 @@ export class CompaniesComponent implements OnInit {
 
   imgCollection: Array<object> = [
     {
-      thumbImage: 'assets/images/gali.png',
-      alt: 'gali',
+      image: 'assets/images/Golf-Co.png',
+      thumbImage: 'assets/images/Golf-Co.png',
+      alt: 'golf-co',
+      title: 'golf-co'
     }, {
+      image: 'assets/images/fox.png',
       thumbImage: 'assets/images/fox.png',
-      alt: 'fox'
+      alt: 'fox',
+      title: 'fox'
     }, {
-      thumbImage: 'assets/images/castro.png',
-      alt: 'castro'
-    }, {
-      thumbImage: 'assets/images/tamnoon.jfif',
-      alt: 'tamnoon'
-    }, {
+      image: 'assets/images/renuar.png',
       thumbImage: 'assets/images/renuar.png',
-      alt: 'renuar'
+      alt: 'renuar',
+      title: 'renuar'
     }, {
+      image: 'assets/images/mango.png',
       thumbImage: 'assets/images/mango.png',
-      alt: 'mango'
+      alt: 'mango',
+      title: 'mango'
     }, {
+      image: 'assets/images/zara.png',
       thumbImage: 'assets/images/zara.png',
-      alt: 'zara'
+      alt: 'zara',
+      title: 'zara'
     }, {
-      thumbImage: 'assets/images/topshop.jfif',
-      alt: 'topshop'
-    }, {
+      image: 'assets/images/shilav.png',
       thumbImage: 'assets/images/shilav.png',
-      alt: 'shilav'
+      alt: 'shilav',
+      title: 'shilav'
     }, {
+      image: 'assets/images/adidas.png',
       thumbImage: 'assets/images/adidas.png',
-      alt: 'adidas'
+      alt: 'adidas',
+      title: 'adidas'
     }, {
+      image: 'assets/images/greg.png',
       thumbImage: 'assets/images/greg.png',
-      alt: 'greg'
+      alt: 'greg',
+      title: 'greg'
     }, {
+      image: 'assets/images/delta.png',
       thumbImage: 'assets/images/delta.png',
-      alt: 'delta'
+      alt: 'delta',
+      title: 'delta'
+    }, {
+      image: 'assets/images/stimatki.png',
+      thumbImage: 'assets/images/stimatki.png',
+      alt: 'stimatki',
+      title: 'stimatki'
     }
   ];
 }

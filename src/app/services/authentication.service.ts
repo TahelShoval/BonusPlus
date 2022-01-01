@@ -5,6 +5,7 @@ import Worker from 'src/app/classes/worker'
 import { Router } from '@angular/router';
 import { EmployerService } from './employer.service';
 import Employer from '../classes/employer';
+import { HeaderComponent } from '../components/header/header.component';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,9 @@ export class AuthenticationService {
         this.isAuthenticated = true;
         this.typeEntry = "worker";
         this.router.navigate(['/private-area-worker/personal-benefits']);
+        localStorage.setItem('worker', JSON.stringify(this.worker));
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('typeEntry', 'worker');
         console.log("worker");
         console.log(this.worker);
         return true;
@@ -39,6 +43,9 @@ export class AuthenticationService {
         this.isAuthenticated = true;
         this.typeEntry = "employer";
         this.router.navigate(['/private-area-management/personal-workers']);
+        localStorage.setItem('employer', JSON.stringify(this.employer));
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('typeEntry', 'employer');
         console.log("employer");
         console.log(this.employer);
         return true;
@@ -77,6 +84,11 @@ export class AuthenticationService {
   }
 
   logout() {
+    var entry = localStorage.getItem('typeEntry');
+    if (entry)
+      localStorage.removeItem(entry.toString());
+    localStorage.removeItem('typeEntry');
+    localStorage.setItem('isAuthenticated', 'false');
     this.isAuthenticated = false;
     this.typeEntry = "";
     this.router.navigate(['/']);

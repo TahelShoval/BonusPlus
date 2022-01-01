@@ -1,9 +1,16 @@
-/* .app{
-
-} */
+html, body {
+    scroll-behavior: smooth !important;
+}
 
 .app-header{
-    height: 100px;
+    scroll-behavior: smooth !important;
+
+    height: 120px;
+    z-index: 1;
+}
+
+.app-main{
+    z-index: 0;
 }
 
 

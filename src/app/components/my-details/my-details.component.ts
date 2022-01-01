@@ -18,10 +18,12 @@ export class MyDetailsComponent implements OnInit {
   updateEmployer: Employer = new Employer();
   updateAddress: Address = new Address();
 
-  constructor(private authenticationService: AuthenticationService, private addressService: AddressService) { }
+  constructor(private addressService: AddressService) { }
 
   ngOnInit(): void {
-    this.employer = this.authenticationService.employer;
+    const employer = localStorage.getItem('employer');
+    if (employer)
+      this.employer = JSON.parse(employer);
     this.addressService.getAddressById(this.employer.AddressID).subscribe(res => { this.address = res; });
     this.updateForm = new FormGroup({
       'company': new FormControl("", Validators.required),
@@ -52,7 +54,7 @@ export class MyDetailsComponent implements OnInit {
     this.updateAddress.Street = updateForm.value.address.street;
     this.updateAddress.ZipCode = updateForm.value.address.zipCode;
     this.addressService.updateAddress(this.updateAddress).subscribe(() => {
-      this.updateEmployer.AddressID=this.updateAddress.ID;
+      this.updateEmployer.AddressID = this.updateAddress.ID;
       this.updateEmployer.EmployerID = this.employer.EmployerID;
       this.updateEmployer.CompanyName = this.updateForm.value.CompanyName;
       this.updateEmployer.NameEmployer = this.updateForm.value.NameEmployer;

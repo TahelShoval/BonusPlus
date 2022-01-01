@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ForgetPasswordComponent } from '../forget-password/forget-password.component';
 import { MatDialog } from '@angular/material/dialog';
 import Employer from 'src/app/classes/employer';
@@ -15,11 +15,43 @@ import { SignInData } from 'src/app/classes/signInData';
 export class SignInManagementComponent implements OnInit {
 
   hide = true;
-  userName = "";
-  password = "";
-  employer = new Employer;
-  
-  constructor(public dialog: MatDialog, private authenticationService:AuthenticationService) { }
+  isFormInvalid = false;
+  areCredentialsInvalid = false;
+  signInForm = new FormGroup({});
+
+  constructor(public dialog: MatDialog, private authenticationService: AuthenticationService) { }
+
+  ngOnInit(): void {
+    this.signInForm = new FormGroup({
+      'userName': new FormControl("", Validators.required),
+      'password': new FormControl("", Validators.required),
+    })
+  }
+
+  getUserNameError() {
+    return this.signInForm.get('userName')?.hasError('required') ? 'שדה חובה' : '';
+  }
+
+  getPasswordError() {
+    return this.signInForm.get('password')?.hasError('required') ? 'שדה חובה' : '';
+  }
+
+  onSubmit(signInForm: FormGroup) {
+    if (!signInForm.valid) {
+      this.isFormInvalid = true;
+      this.areCredentialsInvalid = false;
+      return;
+    }
+    this.checkCredentials(signInForm)
+  }
+
+  private checkCredentials(signInForm: FormGroup) {
+    const signInData = new SignInData(signInForm.value.userName, signInForm.value.password, "employer");
+    if (!this.authenticationService.authenticate(signInData)) {
+      this.isFormInvalid = false;
+      this.areCredentialsInvalid = true;
+    }
+  }
 
   public openDialog(): void {
     const dialogRef = this.dialog.open(ForgetPasswordComponent, {
@@ -29,13 +61,5 @@ export class SignInManagementComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
-  }
-
-  ngOnInit(): void {
-  }
-
-  onSubmit(signInForm: NgForm) {
-    const signInData = new SignInData(signInForm.value.userName, signInForm.value.password, "employer");
-    this.authenticationService.authenticate(signInData);
   }
 }

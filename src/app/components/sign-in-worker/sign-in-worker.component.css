@@ -1,55 +1,80 @@
-.container{
-    width: 400px;
-    height: 300px;
-    padding: 30px;
-    color: #08376b;
-}
-
-.submit{
-    border-radius: 50px;
-    background-color: #08376b;
-    border: 1px #52c8ee solid;
-    color: #fff;
-    height: 40px;
-    width: 200px;
-    font-size: 17px;
-    margin: 20px;
-    font: bold;
-}
-
-button:hover{
-    opacity: 0.8;
-}
-
-.form-field{
-    padding: 20px;
-}
-
-input{
+.form-container{
     width: 100%;
-}
-
-.forgot-password{
-    padding: 20px;
-}
-
-a{
-    font-weight: bold;
-    font-size: 15px;
+    height: 88vh;
+    background-color: #dddddd;
+    padding-top: 100px;
 }
 
 h1{
-    font: bold;
-}
-
-.forget-btn{
-    border: none;
-    background-color: #fff;
-    color: #08376b;
+    font-size: 3.2rem;  
+    font-family: Segoe UI;
+    color:#e6b400;
     font-weight: bold;
-    font-size: 16px;
+} 
+
+h2{
+    font-size: 2rem;  
+    font-family: Segoe UI;
+    color:#e6b400;
+    margin-top: 20px;
+    font-weight: bold;
+} 
+
+h3{
+    font-size: 1.2rem;  
+    font-family: Segoe UI;
+    color:#000;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-weight: bold;
 }
 
-.help-block{
-    color: rgb(231, 18, 18);
+.container{
+    width: 30rem;
+    margin: auto;
+    margin-top: 5rem;
+}
+
+mat-form-field{
+    text-align: right;
+    margin-bottom: 16px;
+}
+
+mat-form-field.mat-form-field {
+    font-family: Segoe UI;
+    font-size: 1rem;
+}
+
+.forgot-container{
+    margin-top: 10px;
+}
+
+a{
+    text-decoration: none;
+    font-size: 1rem;  
+    font-family: Segoe UI;
+    color:#e6b400;
+    font-weight: bold;
+}
+
+.submit{
+    margin-top: 70px;
+    font-family: Segoe UI; 
+    color: #1b1a1a;    
+    font-size: 1.2rem;
+    background-color: #e6b400; 
+    font-weight: bold; 
+    width: 200px;
+    height: 45px;
+    transition: 0.2s ease-in-out;
+}
+
+button:hover{
+    font-size: 1.3rem;
+}
+
+.alert{
+    font-family: Segoe UI; 
+    color: red;
+    font-weight: bold; 
 }
