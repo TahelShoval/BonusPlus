@@ -7,18 +7,18 @@
                         <img mat-card-image src="assets/images/logo/{{item.Supplierlogo}}" alt="{{item.SupplierName}}">
                     </div>
                 </mat-card-header>
-
-                <img mat-card-image src="assets/images/benefits/{{item.BenefitImage}}" alt="{{item.SupplierName}}">
-
+                <div class="img-container">
+                    <img mat-card-image src="assets/images/benefits/{{item.BenefitImage}}" alt="{{item.SupplierName}}">
+                </div>
                 <mat-card-content>
                     <div>
                         {{item.BenefitDetails}}
                     </div>
                 </mat-card-content>
-                <!-- <div class="action">
-                    <p>למימוש</p>
-                </div> -->
             </mat-card>
+            <div class="action">
+                <p>למימוש</p>
+            </div>
         </div>
     </div>
 </div>

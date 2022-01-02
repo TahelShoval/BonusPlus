@@ -27,6 +27,11 @@ export class WorkerService {
     return this.http.get<Worker>(`${this.url}GetWorkerByEmail/` + email);
   }
 
+  public sendEmail(email: string) {
+    debugger;
+    this.http.delete(`${this.url}sendEmail/` + email).subscribe(() => console.log(''));
+  }
+
   public deleteWorker(id: number) {
     this.http.delete(`${this.url}DeleteWorker/` + id).subscribe(() => console.log('Delete successful'));
   }

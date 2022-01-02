@@ -1,17 +1,21 @@
 <div class="container row">
     <div *ngFor="let item of workerBenefits" class="col-4">
-        <mat-card *ngIf="item.BenefitStatus == 1" class="text-center ">
-            <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-            </mat-card-header>
-            <div class="img-container">
-                <img mat-card-image src="assets/images/{{item.SupplierName}}.png" alt="{{item.SupplierName}}">
-            </div>
-            <mat-card-content>
-                <p>
-                    {{item.BenefitDetails}}
-                </p>
-            </mat-card-content>
-        </mat-card>
+        <div class="card-container">
+            <mat-card class="text-center">
+                <mat-card-header>
+                    <div mat-card-avatar class="logo-container">
+                        <img mat-card-image src="assets/images/logo/{{item.Supplierlogo}}" alt="{{item.SupplierName}}">
+                    </div>
+                </mat-card-header>
+                <div class="img-container">
+                    <img mat-card-image src="assets/images/benefits/{{item.BenefitImage}}" alt="{{item.SupplierName}}">
+                </div>
+                <mat-card-content>
+                    <div>
+                        {{item.BenefitDetails}}
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
 </div>

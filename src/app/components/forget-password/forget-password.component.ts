@@ -30,11 +30,10 @@ export class ForgetPasswordComponent implements OnInit {
       var newEmail = email;
       newEmail = newEmail.replace(/\./gi, "{}");
       newEmail = newEmail.replace(/\@/gi, "[]");
-      console.log(newEmail)
       this.workerservice.getWorkerByEmail(newEmail).subscribe(res => {
         var worker = res;
         if (worker != null) {
-          console.log(worker);
+          this.workerservice.sendEmail(newEmail);
           alert("הסיסמא נשלחה");
         }
         else {

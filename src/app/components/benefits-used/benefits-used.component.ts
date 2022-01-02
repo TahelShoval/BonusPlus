@@ -11,7 +11,7 @@ import { WorkersBenefitsService } from 'src/app/services/workers-benefits.servic
 export class BenefitsUsedComponent implements OnInit {
 
   workerBenefits: WorkerBenefits[] = [];
-
+  counter = 0;
   constructor(private workersBenefitsService: WorkersBenefitsService) { }
 
   ngOnInit(): void {
@@ -19,7 +19,10 @@ export class BenefitsUsedComponent implements OnInit {
     if (workerString) {
       const workerObj: Worker = JSON.parse(workerString);
       this.workersBenefitsService.getSuppliersBenefitByWorkerId(workerObj.ID).subscribe(res => {
-        this.workerBenefits = res;
+        res.forEach(element => {
+          if (element.BenefitStatus == 1)
+            this.workerBenefits[this.counter++] = element;
+        });
       });
     }
   }

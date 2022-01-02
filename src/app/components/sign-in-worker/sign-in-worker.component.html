@@ -17,10 +17,10 @@
       <mat-form-field appearance="fill" hideRequiredMarker class="col">
         <mat-label>סיסמא</mat-label>
         <input matInput formControlName="password" name="password" [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
+        </button> -->
         <mat-error>{{getPasswordError()}}</mat-error>
       </mat-form-field>
 

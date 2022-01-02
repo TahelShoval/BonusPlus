@@ -1,4 +1,4 @@
-<div class="text-center">
+<div class="dialog-container text-center">
     <h1 mat-dialog-title><strong>{{actionName}}</strong></h1>
     <div mat-dialog-content>
         <div *ngIf="action != 'Delete'; else elseTemplate">
@@ -29,8 +29,8 @@
             ? האם למחוק את <b>{{local_data.WorkerName}}</b>
         </ng-template>
     </div>
-    <div class="row" mat-dialog-actions>
-        <button class="col" mat-button (click)="doAction()">{{actionName}}</button>
-        <button class="col" mat-button (click)="closeDialog()" mat-flat-button color="warn">סגירה</button>
+    <div class="col actions-container" mat-dialog-actions>
+        <button class="row action-btn" mat-raised-button (click)="doAction()">{{actionNameButton}}</button>
+        <button class="row close-dialog" mat-button (click)="closeDialog()" mat-flat-button >סגירה</button>
     </div>
 </div>

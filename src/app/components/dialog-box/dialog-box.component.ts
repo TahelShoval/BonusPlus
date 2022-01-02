@@ -15,6 +15,7 @@ export class DialogBoxComponent {
 
   action: string;
   actionName: string;
+  actionNameButton: string;
   local_data: any;
 
   constructor(
@@ -23,12 +24,18 @@ export class DialogBoxComponent {
     console.log(data);
     this.local_data = { ...data };
     this.action = this.local_data.action;
-    if (this.local_data.action == "Update")
-      this.actionName = "עדכון";
-    else if (this.local_data.action == "Delete")
-      this.actionName = "מחיקה";
-    else
-      this.actionName = "הוספה";
+    if (this.local_data.action == "Update") {
+      this.actionName = "עדכון פרטי עובד";
+      this.actionNameButton = "עדכון"
+    }
+    else if (this.local_data.action == "Delete") {
+      this.actionName = "מחיקת עובד";
+      this.actionNameButton = "מחיקה"
+    }
+    else {
+      this.actionName = "הוספת עובד";
+      this.actionNameButton = "הוספה"
+    }
   }
 
   doAction() {

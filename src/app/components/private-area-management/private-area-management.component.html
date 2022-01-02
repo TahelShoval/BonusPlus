@@ -1,14 +1,19 @@
-<div class="container row">
-    <div class="l-col-12 text-center">
-        <h1>הפרטים שלי</h1>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="col-9">
-        <router-outlet></router-outlet>
-    </div>
-    <div class="side-nav col-3" text-right>
-        <a mat-menu-item [routerLink]="['/private-area-management/all-benefits']">כל ההטבות</a>
-        <a mat-menu-item [routerLink]="['/private-area-management/personal-workers']">פרטי עובדים</a>
-        <a mat-menu-item [routerLink]="['/private-area-management/my-details']">הפרטים שלי</a>
+<div class="all-page">
+    <div class="container row">
+        <div class="l-col-12 text-center">
+            <h1>{{title}}</h1>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="col-9">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="side-nav col-3" text-right>
+            <a (click)="changeTitle(1)" mat-menu-item [routerLink]="['/private-area-management/all-benefits']">כל
+                ההטבות</a>
+            <a (click)="changeTitle(2)" mat-menu-item [routerLink]="['/private-area-management/personal-workers']">פרטי
+                עובדים</a>
+            <a (click)="changeTitle(3)" mat-menu-item [routerLink]="['/private-area-management/my-details']">הפרטים
+                שלי</a>
+        </div>
     </div>
 </div>

@@ -36,7 +36,7 @@ export class PersonalWorkersComponent implements OnInit {
   openDialog(action: any, obj: any) {
     obj.action = action;
     const dialogRef = this.dialog.open(DialogBoxComponent, {
-      width: '250px',
+      width: '300px',
       data: obj
     });
 

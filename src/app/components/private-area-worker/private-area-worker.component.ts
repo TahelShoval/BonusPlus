@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivateAreaWorkerComponent implements OnInit {
 
+  title: string = "כל ההטבות";
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  changeTitle(n: number) {
+    if (n == 1)
+      this.title = "כל ההטבות";
+    if (n == 2) {
+      this.title = "הטבות שמימשתי";
+    }
   }
 
 }

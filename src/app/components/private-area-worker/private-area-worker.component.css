@@ -1,10 +1,11 @@
 .all-page{
-     background-color: #dddddd;
-     height: 88vh;
+    background-color: #dddddd;
+    min-height: 88vh;
 }
 
 .container{
     margin: auto;
+    padding-bottom: 50px;
 }
 
 a{

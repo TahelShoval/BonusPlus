@@ -4,4 +4,40 @@ ng-template{
 
 mat-form-field{
     text-align: right;
+    font-family: Segoe UI;
+    font-size: 0.8rem;
+    font-weight: bold; 
+    color: #000;
+}
+
+.dialog-container{
+    font-family: Segoe UI; 
+}
+
+h1{
+    font-family: Segoe UI; 
+    font-size: 1.8rem;
+    margin-bottom: 50px;
+}
+
+.actions-container{
+    width: 170px;
+    margin: auto;
+}
+
+.action-btn{
+    margin-top: 20px;
+    font-family: Segoe UI; 
+    color: #000;    
+    font-size: 1rem;
+    background-color: #e6b400; 
+    font-weight: bold; 
+    transition: 0.2s ease-in-out;
+}
+
+.close-dialog{
+    margin-top: 10px;
+    font-family: Segoe UI; 
+    color: #000;    
+    font-size: 1rem;
 }

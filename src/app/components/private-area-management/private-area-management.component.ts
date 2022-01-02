@@ -10,9 +10,20 @@ import { WorkerService } from 'src/app/services/worker.service';
 })
 export class PrivateAreaManagementComponent implements OnInit {
 
+  title: string = "כל ההטבות"
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  changeTitle(n: number) {
+    if (n == 1)
+      this.title = "כל ההטבות";
+    if (n == 2)
+      this.title = "פרטי עובדים";
+    if (n == 3)
+      this.title = "הפרטים שלי";
   }
 
 }

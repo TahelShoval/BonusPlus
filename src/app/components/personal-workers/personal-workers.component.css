@@ -5,6 +5,11 @@ table {
   font-size: 15px;
 }
 
+th{
+  color: #000;
+  font-size: 17px !important;
+}
+
 .mat-header-cell{
   text-align: center;
   font-family: Segoe UI;
