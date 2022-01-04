@@ -1,20 +1,54 @@
-.container{
-    width: 400px;
-    height: 100vh;
-    padding: 30px;
-    color: #08376b;
+.allPage{
+    background-color: #dddddd;
+    direction: rtl;
+    min-height: 88vh;;
+}
+
+.PersonalInformation {
+    margin-right: 11%;
+}
+
+.Moredetails {
+    margin-right: -12%;
+}
+
+.logindetails {
+    margin-right: -12%;
+}
+
+h1{
+    font-size: 26px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e6b400;
+    font: bolder;
+    padding-top:2%;    
+}
+
+h2{
+    margin-top: 1%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e6b400;
+
 }
 
 .submit{
-    border-radius: 50px;
-    background-color: #08376b;
-    border: 1px #52c8ee solid;
-    color: #fff;
-    height: 40px;
+    margin-top: 70px;
+    font-family: Segoe UI;
+    color: #1b1a1a;
+    font-size: 1.2rem;
+    background-color: #e6b400;
+    font-weight: bold;
     width: 200px;
-    font-size: 17px;
-    margin: 20px;
-    font: bold;
+    height: 45px;
+    transition: 0.2s ease-in-out;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+button{
+    margin:auto;
 }
 
 button:hover{
@@ -39,5 +73,6 @@ h1{
 
 mat-form-field{
     text-align: right;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }

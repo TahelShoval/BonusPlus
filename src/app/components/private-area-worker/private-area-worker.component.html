@@ -1,15 +1,17 @@
 <div class="all-page">
-  <div class="container row">
-    <div class="l-col-12 text-center">
+    <div class="text-center">
         <h1>{{title}}</h1>
     </div>
     <mat-divider></mat-divider>
-    <div class="col-9 router-container">
-        <router-outlet></router-outlet>
+    <div class="row">
+        <div class="col-10 router-container">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="side-nav col-2" text-right>
+            <a (click)="changeTitle(1)" mat-menu-item [routerLink]="['/private-area-worker/personal-benefits']">כל
+                ההטבות</a>
+            <a (click)="changeTitle(2)" mat-menu-item [routerLink]="['/private-area-worker/benefits-used']">הטבות
+                שמימשתי</a>
+        </div>
     </div>
-    <div class="side-nav col-3" text-right>
-        <a (click)="changeTitle(1)" mat-menu-item [routerLink]="['/private-area-worker/personal-benefits']">כל ההטבות</a>
-        <a (click)="changeTitle(2)" mat-menu-item [routerLink]="['/private-area-worker/benefits-used']">הטבות שמימשתי</a>
-    </div>
-  </div>
 </div>

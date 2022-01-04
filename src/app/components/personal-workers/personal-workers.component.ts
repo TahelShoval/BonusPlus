@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import Worker from 'src/app/classes/worker';
-import { AuthenticationService } from 'src/app/services/authentication.service';
 import { WorkerService } from 'src/app/services/worker.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 import Employer from 'src/app/classes/employer';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-personal-workers',
@@ -28,7 +28,6 @@ export class PersonalWorkersComponent implements OnInit {
       this.employer = JSON.parse(employer);
     this.workerService.getWorkersByEmployerId(this.employer.EmployerID).subscribe(res => {
       this.workers = res;
-      console.log(this.workers);
       this.dataSource = [...this.workers];
     })
   }
@@ -63,7 +62,6 @@ export class PersonalWorkersComponent implements OnInit {
     this.worker.WorkerUserName = row_obj.WorkerUserName;
     this.worker.WorkerPassword = row_obj.WorkerPassword;
     this.workerService.addWorker(this.worker);
-    this.ngOnInit();
   }
 
   updateRowData(row_obj: Worker) {
@@ -77,12 +75,9 @@ export class PersonalWorkersComponent implements OnInit {
     this.worker.WorkerUserName = row_obj.WorkerUserName;
     this.worker.WorkerPassword = row_obj.WorkerPassword;
     this.workerService.updateWorker(this.worker);
-    this.ngOnInit();
   }
 
   deleteRowData(row_obj: Worker) {
     this.workerService.deleteWorker(row_obj.ID);
-    this.ngOnInit();
   }
-
 }

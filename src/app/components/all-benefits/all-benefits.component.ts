@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import SuppliersBenefits from 'src/app/classes/suppliers-benefits';
 import { SuppliersBenefitsService } from 'src/app/services/suppliers-benefits.service';
 
@@ -11,9 +12,13 @@ export class AllBenefitsComponent implements OnInit {
 
   suppliersBenefits: SuppliersBenefits[] = [];
 
-  constructor(private suppliersBenefitsService: SuppliersBenefitsService) { }
+  constructor(private suppliersBenefitsService: SuppliersBenefitsService, private router: Router) { }
 
   ngOnInit(): void {
     this.suppliersBenefitsService.GetAllDetailsSuppliersBenefits().subscribe(res => { this.suppliersBenefits = res })
+  }
+
+  purchase(){
+    this.router.navigate(['/private-area-management/all-benefits/purchase']);
   }
 }

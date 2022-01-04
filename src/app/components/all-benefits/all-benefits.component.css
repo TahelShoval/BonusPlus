@@ -1,5 +1,9 @@
+.container{
+    margin: auto;
+}
+
 .card-container{
-    border-radius: 20px;
+    border-radius: 5px;
     margin: 0.5rem;
     width: 290px;
     background:radial-gradient(#111 50%, #000 100%);
@@ -11,7 +15,6 @@ mat-card{
     clear: both;
     display: block;
     overflow: inherit;
-    border-radius: 20px;
     width: 100%;
     transition: all 0.3s ease-out;
 }
@@ -59,6 +62,10 @@ mat-card-content{
     transform: translateY(30px);
 	opacity: 0;
 	transition: all 0.3s ease-out 0.2s;
+}
+
+.action:hover mat-card{
+    opacity: 0.3;
 }
 
 p{

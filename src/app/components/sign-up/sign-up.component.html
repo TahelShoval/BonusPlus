@@ -1,4 +1,5 @@
-<div class="container text-center">
+<div class="allPage text-center">
+  <div class="container">
     <!-- <button mat-raised-button (click)="isEditable = !isEditable">
         {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
       </button>
@@ -38,67 +39,91 @@
       </mat-horizontal-stepper> -->
     <h1>הרשמה</h1>
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm)">
+      <div class="row">
+        <div class="col-4 PersonalInformation">
+          <h2>פרטים אישיים</h2>
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>שם חברה</mat-label>
             <input matInput formControlName="company" name="company" required>
             <mat-error>{{getCompanyError()}}</mat-error>
         </mat-form-field>
+        <br>
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>שם מנהל</mat-label>
             <input matInput formControlName="name" name="name" required>
             <mat-error>{{getNameError()}}</mat-error>
         </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill" hideRequiredMarker>
+          <mat-label>פלאפון</mat-label>
+          <input matInput formControlName="phone" name="phone" required>
+          <mat-error>{{getPhoneError()}}</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill" hideRequiredMarker>
+         <mat-label>מייל</mat-label>
+          <input matInput formControlName="email" name="email" required>
+          <mat-error>{{getEmailError()}}</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill" hideRequiredMarker>     
+        <mat-label>אישור מייל</mat-label>
+        <input matInput formControlName="emailConfirm" name="emailConfirm" required>
+        <mat-error>{{getEmailConfirmError()}}</mat-error>
+    </mat-form-field>
+      </div>
+
+      <div class="col-4 Moredetails">
+        <h2>פרטים נוספים</h2>
         <div formGroupName="address">
             <mat-form-field appearance="fill" hideRequiredMarker>
                 <mat-label>עיר</mat-label>
                 <input matInput formControlName="city" name="city" required>
                 <mat-error>{{getCityError()}}</mat-error>
             </mat-form-field>
+            <br>
             <mat-form-field appearance="fill" hideRequiredMarker>
                 <mat-label>רחוב</mat-label>
                 <input matInput formControlName="street" name="street" required>
                 <mat-error>{{getStreetError()}}</mat-error>
             </mat-form-field>
+            <br>
             <mat-form-field appearance="fill" hideRequiredMarker>
                 <mat-label>מיקוד</mat-label>
                 <input matInput formControlName="zipCode" name="zipCode" required>
                 <mat-error>{{getZipCodeError()}}</mat-error>
             </mat-form-field>
+            
         </div>
-        <mat-form-field appearance="fill" hideRequiredMarker>
-            <mat-label>פלאפון</mat-label>
-            <input matInput formControlName="phone" name="phone" required>
-            <mat-error>{{getPhoneError()}}</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill" hideRequiredMarker>
-            <mat-label>מייל</mat-label>
-            <input matInput formControlName="email" name="email" required>
-            <mat-error>{{getEmailError()}}</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill" hideRequiredMarker>
-          <mat-label>אישור מייל</mat-label>
-          <input matInput formControlName="emailConfirm" name="emailConfirm" required>
-          <mat-error>{{getEmailConfirmError()}}</mat-error>
-      </mat-form-field>
+      </div>
+        
+      <div class="col-4 logindetails">
+        <h2>פרטי התחברות</h2>
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>שם משתמש</mat-label>
             <input matInput formControlName="userName" name="userName" required>
             <mat-error>{{getUserNameError()}}</mat-error>
         </mat-form-field>
+        <br>
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>סיסמא</mat-label>
             <input matInput formControlName="password" name="password" required>
             <mat-error>{{getPasswordError()}}</mat-error>
         </mat-form-field>
+        <br>
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>אישור סיסמא</mat-label>
             <input matInput formControlName="passwordConfirm" name="passwordConfirm" required>
             <mat-error>{{getPasswordConfirmError()}}</mat-error>
         </mat-form-field>
+      </div>
+
         <button class="submit" value="send" type="submit">הירשם</button>
         <div class="alert alert-danger" role="alert" *ngIf="isFormInvalid">
             מלא את כל השדות
         </div>
 
+      </div>
     </form>
+  </div>
 </div>

@@ -29,6 +29,8 @@ import { MyDetailsComponent } from './components/my-details/my-details.component
 import { FooterComponent } from './components/footer/footer.component';
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { PaymentComponent } from './components/payment/payment.component';
+import { PurchaseComponent } from './components/purchase/purchase.component';
 
 
 @NgModule({
@@ -55,6 +57,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
     MyDetailsComponent,
     FooterComponent,
     DialogBoxComponent,
+    PaymentComponent,
+    PurchaseComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,8 @@
 .all-page{
     background-color: #dddddd;
     min-height: 88vh;
-}
-
-.container{
-    margin: auto;
-    padding-bottom: 50px;
+    padding: 50px 120px;
+    margin: 0;
 }
 
 a{
@@ -17,11 +14,14 @@ a{
 }
 
 h1{
-    margin: 2rem;
     font-size: xx-large;
     font-family: Segoe UI;
 }
 
 mat-divider{
     margin-bottom: 1.5rem;
+}
+
+.side-nav{
+    border-left: 1px solid #c2c2c2;
 }

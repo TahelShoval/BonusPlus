@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { AllBenefitsComponent } from './components/all-benefits/all-benefits.component';
@@ -12,6 +12,7 @@ import { PersonalBenefitsComponent } from './components/personal-benefits/person
 import { PersonalWorkersComponent } from './components/personal-workers/personal-workers.component';
 import { PrivateAreaManagementComponent } from './components/private-area-management/private-area-management.component';
 import { PrivateAreaWorkerComponent } from './components/private-area-worker/private-area-worker.component';
+import { PurchaseComponent } from './components/purchase/purchase.component';
 import { SignInManagementComponent } from './components/sign-in-management/sign-in-management.component';
 import { SignInWorkerComponent } from './components/sign-in-worker/sign-in-worker.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -40,7 +41,7 @@ const routes: Routes = [
     path: "private-area-management",
     component: PrivateAreaManagementComponent,
     children: [
-      { path: "all-benefits", component: AllBenefitsComponent },
+      { path: "all-benefits", component: AllBenefitsComponent, children: [{ path: "purchase", component: PurchaseComponent }] },
       { path: "personal-workers", component: PersonalWorkersComponent },
       { path: "my-details", component: MyDetailsComponent }
     ]
