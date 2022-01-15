@@ -61,7 +61,7 @@ export class PersonalWorkersComponent implements OnInit {
     this.worker.Email = row_obj.Email;
     this.worker.WorkerUserName = row_obj.WorkerUserName;
     this.worker.WorkerPassword = row_obj.WorkerPassword;
-    this.workerService.addWorker(this.worker);
+    this.workerService.addWorker(this.worker).subscribe(res => window.location.reload());
   }
 
   updateRowData(row_obj: Worker) {
@@ -74,10 +74,10 @@ export class PersonalWorkersComponent implements OnInit {
     this.worker.Email = row_obj.Email;
     this.worker.WorkerUserName = row_obj.WorkerUserName;
     this.worker.WorkerPassword = row_obj.WorkerPassword;
-    this.workerService.updateWorker(this.worker);
+    this.workerService.updateWorker(this.worker).subscribe(res => window.location.reload());
   }
 
   deleteRowData(row_obj: Worker) {
-    this.workerService.deleteWorker(row_obj.ID);
+    this.workerService.deleteWorker(row_obj.ID).subscribe(() => window.location.reload());
   }
 }

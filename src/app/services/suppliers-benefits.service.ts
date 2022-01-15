@@ -12,7 +12,6 @@ export class SuppliersBenefitsService {
   constructor(private http:HttpClient) { }
 
   public GetAllDetailsSuppliersBenefits(): Observable<SuppliersBenefits[]> {
-    debugger;
     return this.http.get<SuppliersBenefits[]>(`${this.url}GetAllDetailsSuppliersBenefits`);
   }
 }

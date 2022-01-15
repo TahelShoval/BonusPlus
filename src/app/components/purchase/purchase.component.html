@@ -1,1 +1,134 @@
-<p>purchase works!</p>
+<div class="all-page">
+    <div class="col">
+        <div class="row">
+            <h2>פרטי הטבה</h2>
+            <div class="row details-benefit">
+                <div class="col">
+                    <div class="logo-container">
+                        <img mat-card-image src="assets/images/logo/{{benefit.SupplierLogo}}"
+                            alt="{{benefit.SupplierName}}">
+                    </div>
+                    <div class="details-container">
+                        {{benefit.BenefitDetails}}<br>
+                        מחיר הטבה: {{benefit.Price}}
+                    </div>
+                </div>
+                <div class="col">
+
+                    <div class="benefit-container">
+                        <img mat-card-image src="assets/images/benefits/{{benefit.BenefitImage}}"
+                            alt="{{benefit.SupplierName}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <h2>בחירת עובדים</h2>
+            <div class="workers">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 text-center">
+                    <ng-container matColumnDef="Seniority">
+                        <th mat-header-cell *matHeaderCellDef> ותק </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Seniority}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="JobType">
+                        <th mat-header-cell *matHeaderCellDef> דרגה </th>
+                        <td mat-cell *matCellDef="let element"> {{element.JobType}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="WorkerID">
+                        <th mat-header-cell *matHeaderCellDef> תעודת זהות </th>
+                        <td mat-cell *matCellDef="let element"> {{element.WorkerID}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="WorkerName">
+                        <th mat-header-cell *matHeaderCellDef> שם </th>
+                        <td mat-cell *matCellDef="let element"> {{element.WorkerName}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="select">
+                        <th mat-header-cell *matHeaderCellDef>
+                            <mat-checkbox (change)="$event ? masterToggle() : null"
+                                [checked]="selection.hasValue() && isAllSelected()"
+                                [indeterminate]="selection.hasValue() && !isAllSelected()">
+                            </mat-checkbox>
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                            <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+                            </mat-checkbox>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <h2>תשלום</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        {{this.selection.selected.length*benefit.Price}} :סה"כ לתשלום
+                    </div>
+                    <div class="col">
+                        {{this.selection.selected.length}} :כמות עובדים
+                    </div>
+                    <div class="col">
+                        {{benefit.Price}} :מחיר ליחידה
+                    </div>
+                </div>
+                <form [formGroup]="paymentForm" (ngSubmit)="onSubmit(paymentForm)">
+                    <div class="row">
+                        <mat-form-field appearance="fill" hideRequiredMarker class="col">
+                            <mat-label>שם בעל הכרטיס</mat-label>
+                            <input matInput formControlName="nameCardHolder" name="nameCardHolder" required>
+                            <mat-error>{{getNameCardHolderError()}}</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" hideRequiredMarker class="col">
+                            <mat-label>ת.ז בעל הכרטיס</mat-label>
+                            <input matInput formControlName="idCardHolder" name="idCardHolder" required>
+                            <mat-error>{{getIdCardHolderError()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field appearance="fill" hideRequiredMarker>
+                            <mat-label>מספר כרטיס</mat-label>
+                            <input matInput formControlName="cardNumber" name="cardNumber" required>
+                            <mat-error>{{getCardNumberError()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field appearance="fill" hideRequiredMarker class="col">
+                            <mat-label>חודש</mat-label>
+                            <input matInput formControlName="expireMonth" name="expireMonth" required>
+                            <mat-error>{{getExpireMonthError()}}</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" hideRequiredMarker class="col">
+                            <mat-label>שנה</mat-label>
+                            <input matInput formControlName="expireYear" name="expireYear" required>
+                            <mat-error>{{getExpireYearError()}}</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" hideRequiredMarker class="col">
+                            <mat-label>CVV</mat-label>
+                            <input matInput formControlName="cvv" name="cvv" required>
+                            <mat-error>{{getCvvError()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+
+
+                    <button class="submit" value="send" type="submit">תשלום</button>
+                    <!-- <div class="alert alert-danger" role="alert" *ngIf="isFormInvalid">
+                    מלא את כל השדות
+                </div> -->
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

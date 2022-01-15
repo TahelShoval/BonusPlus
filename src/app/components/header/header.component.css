@@ -70,10 +70,6 @@ ul{
     background-color: rgb(17, 17, 17);
 }
 
-.nav-link:active:after{
-    transform: scaleX(1);
-}
-
 span>a{
     text-align: right;
 }

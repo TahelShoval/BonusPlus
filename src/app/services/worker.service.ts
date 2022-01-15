@@ -28,20 +28,19 @@ export class WorkerService {
   }
 
   public sendEmail(email: string) {
-    debugger;
-    this.http.delete(`${this.url}sendEmail/` + email).subscribe(() => console.log(''));
+    this.http.delete(`${this.url}sendEmail/` + email).subscribe(() => console.log('email sent'));
   }
 
-  public deleteWorker(id: number) {
-    this.http.delete(`${this.url}DeleteWorker/` + id).subscribe(() => console.log('Delete successful'));
+  public deleteWorker(id: number): Observable<any> {
+    return this.http.delete(`${this.url}DeleteWorker/` + id);
   }
 
-  public updateWorker(worker: Worker) {
-    this.http.put(`${this.url}PutWorker/`, worker).subscribe(() => console.log('Put successful'));
+  public updateWorker(worker: Worker): Observable<any> {
+    return this.http.put(`${this.url}PutWorker/`, worker);
   }
 
-  public addWorker(worker: Worker) {
-    return this.http.post<Worker>(`${this.url}PostWorker`, worker).subscribe(x => { })
+  public addWorker(worker: Worker)  {
+    return this.http.post<Worker>(`${this.url}PostWorker`, worker);
   }
 }
 

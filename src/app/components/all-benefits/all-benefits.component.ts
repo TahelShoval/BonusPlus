@@ -18,7 +18,7 @@ export class AllBenefitsComponent implements OnInit {
     this.suppliersBenefitsService.GetAllDetailsSuppliersBenefits().subscribe(res => { this.suppliersBenefits = res })
   }
 
-  purchase(){
-    this.router.navigate(['/private-area-management/all-benefits/purchase']);
+  purchase(id:number){
+     this.router.navigate(['/private-area-management/'+id]);
   }
 }

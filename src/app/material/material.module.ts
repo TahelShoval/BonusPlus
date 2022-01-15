@@ -11,6 +11,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const materialModules = [
   MatIconModule,
@@ -23,7 +24,8 @@ const materialModules = [
   MatStepperModule,
   MatCardModule,
   MatTableModule,
-  MatTabsModule];
+  MatTabsModule,
+  MatCheckboxModule];
 
 @NgModule({
   declarations: [],

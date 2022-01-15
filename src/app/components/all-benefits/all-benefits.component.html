@@ -1,6 +1,6 @@
 <div class="container row">
     <div *ngFor="let item of suppliersBenefits" class="col-3">
-        <div (click)="purchase()" [routerLink]="['/private-area-management/all-benefits/purchase']" class="card-container">
+        <div (click)="purchase(item.ID)"  class="card-container">
             <mat-card class="text-center">
                 <mat-card-header>
                     <div mat-card-avatar class="logo-container">
@@ -17,8 +17,9 @@
                 </mat-card-content>
             </mat-card>
             <div class="action">
-                <p>לרכישה</p>
+                <a>לרכישה</a>
             </div>
         </div>
     </div>
 </div>
+

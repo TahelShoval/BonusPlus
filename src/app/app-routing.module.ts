@@ -37,13 +37,15 @@ const routes: Routes = [
       { path: "benefits-used", component: BenefitsUsedComponent }
     ]
   },
+  { path: "purchase", component: PurchaseComponent },
   {
     path: "private-area-management",
     component: PrivateAreaManagementComponent,
     children: [
-      { path: "all-benefits", component: AllBenefitsComponent, children: [{ path: "purchase", component: PurchaseComponent }] },
+      { path: "all-benefits", component: AllBenefitsComponent },
       { path: "personal-workers", component: PersonalWorkersComponent },
-      { path: "my-details", component: MyDetailsComponent }
+      { path: "my-details", component: MyDetailsComponent },
+      { path: ":id", component: PurchaseComponent }
     ]
   }
 ];
