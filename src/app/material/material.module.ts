@@ -12,6 +12,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSortModule} from '@angular/material/sort';
+import {MatSelectModule} from '@angular/material/select';
 
 const materialModules = [
   MatIconModule,
@@ -25,7 +27,9 @@ const materialModules = [
   MatCardModule,
   MatTableModule,
   MatTabsModule,
-  MatCheckboxModule];
+  MatCheckboxModule,
+  MatSortModule,
+  MatSelectModule];
 
 @NgModule({
   declarations: [],

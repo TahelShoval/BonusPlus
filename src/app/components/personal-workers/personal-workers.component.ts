@@ -6,6 +6,7 @@ import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 import Employer from 'src/app/classes/employer';
 import { MatTable } from '@angular/material/table';
 
+
 @Component({
   selector: 'app-personal-workers',
   templateUrl: './personal-workers.component.html',
@@ -79,5 +80,11 @@ export class PersonalWorkersComponent implements OnInit {
 
   deleteRowData(row_obj: Worker) {
     this.workerService.deleteWorker(row_obj.ID).subscribe(() => window.location.reload());
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); 
+    filterValue = filterValue.toLowerCase(); 
+    this.dataSource.filter = filterValue;
   }
 }

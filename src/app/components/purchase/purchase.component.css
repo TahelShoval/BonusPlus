@@ -9,19 +9,26 @@ h2{
     margin-bottom: 2rem;
 }
 
+
+
+mat-option{
+    text-align: center;
+}
+
 .benefit-container{
     text-align: right;
-    height: 450px;
+    height: 420px;
 }
 
 .details-container{
-    margin-top: 12rem;
+    margin-top: 4rem;
     text-align: center;
-    font-size: 1.3rem;  
+    font-size: 1.7rem;  
     font-family: Segoe UI;
 }
 
 .logo-container{
+    margin-top: 5rem;
     text-align: center;
 }
 
@@ -33,7 +40,7 @@ h2{
 
 img{
     inline-size: auto;
-    size: 100%;
+    max-height: 100%;    
 }
 
 table {
