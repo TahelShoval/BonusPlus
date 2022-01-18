@@ -1,23 +1,23 @@
 .allPage{
     background-color: #dddddd;
     direction: rtl;
-    min-height: 88vh;;
+    min-height: 88vh;
 }
 
 .PersonalInformation {
-    margin-right: 11%;
+    margin-right:5%;
 }
 
 .Moredetails {
-    margin-right: -12%;
+    margin-right: -6%;
 }
 
 .logindetails {
-    margin-right: -12%;
+    margin-right: -6%;
 }
 
 h1{
-    font-size: 26px;
+    font-size: 35px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #e6b400;
     font: bolder;
@@ -28,6 +28,7 @@ h2{
     margin-top: 1%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #e6b400;
+    font-size: 26px;
 
 }
 
@@ -35,7 +36,7 @@ h2{
     margin-top: 70px;
     font-family: Segoe UI;
     color: #1b1a1a;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     background-color: #e6b400;
     font-weight: bold;
     width: 200px;
@@ -74,5 +75,6 @@ h1{
 mat-form-field{
     text-align: right;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
 
 }

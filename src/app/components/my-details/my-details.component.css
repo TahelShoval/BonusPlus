@@ -1,39 +1,87 @@
-.container{
-    width: 260px;
-    height: 100vh;
-    color: #08376b;
-    margin-right: 0rem;
-    padding-top: 2rem;
+h1{
+    font-size: 35px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e6b400;
+    font: bolder;
+    padding-top:1%; 
+    margin-right: 31%;
 }
 
-.PersonalInformation {
-    margin-right: -268%;
+h2{
+    margin-top: 3%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.Moredetails {
-    margin-left: 4%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-
-.logindetails {
-    margin-left: 4%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e6b400;
+    font-size: 25px;
+    margin-right: 5%;
 }
 
 mat-form-field{
     text-align: right;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+
 }
 
-.actions-container{
-    margin-right: 0rem;
-    width: 260px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.form-field{
+    padding: 5px;
+}
+
+.allP{
+    background-color: #dddddd;
+    direction: rtl;
+    min-height: 88vh;
+}
+
+.PersonalInformation1 {
+    margin-right: 10%;
+}
+
+.Moredetails1 {
+    margin-right: -12%;
+}
+
+.logindetails1 {
+    margin-right: -12%;
+}
+
+.submit{
+    margin-top: 70px;
+    font-family: Segoe UI;
+    color: #1b1a1a;
+    font-size: 1.2rem;
+    background-color: #e6b400;
+    font-weight: bold;
+    width: 110px;
+    height: 40px;
+    transition: 0.2s ease-in-out;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+    margin-right:-20%;
+}
+
+.cancel{
+    margin-right: 2%;
+    margin-top: 70px;
+    font-family: Segoe UI;
+    color: #1b1a1a;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 110px;
+    height: 40px;
+    transition: 0.2s ease-in-out;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+    margin-right: 41%;
 }
 
 button{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 20%;
+    margin:auto;
 }
+
+
+
+

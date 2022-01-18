@@ -44,10 +44,10 @@ const routes: Routes = [
     children: [
       { path: "all-benefits", component: AllBenefitsComponent },
       { path: "personal-workers", component: PersonalWorkersComponent },
-      { path: "my-details", component: MyDetailsComponent },
-      { path: ":id", component: PurchaseComponent }
+      { path: "my-details", component: MyDetailsComponent }
     ]
-  }
+  },
+  { path: "payment/:id", component: PurchaseComponent }
 ];
 
 @NgModule({

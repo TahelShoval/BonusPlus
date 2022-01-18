@@ -31,6 +31,7 @@ import { DialogBoxComponent } from './components/dialog-box/dialog-box.component
 import { NgImageSliderModule } from 'ng-image-slider';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
+import { ApplyBenefitComponent } from './components/apply-benefit/apply-benefit.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { PurchaseComponent } from './components/purchase/purchase.component';
     DialogBoxComponent,
     PaymentComponent,
     PurchaseComponent,
+    ApplyBenefitComponent,
   ],
   imports: [
     BrowserModule,

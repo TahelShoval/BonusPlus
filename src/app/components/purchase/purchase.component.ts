@@ -30,11 +30,11 @@ export class PurchaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(data => {
-      this.id = parseInt(data[0].path);
+      this.id = parseInt(data[1].path);
     });
     this.suppliersBenefitsService.GetAllDetailsSuppliersBenefits().subscribe(res => {
       const benefits = res.filter(x => x.ID == this.id);
-      this.benefit = benefits[0];
+      this.benefit = benefits[0]
     })
     const employer = localStorage.getItem('employer');
     if (employer)

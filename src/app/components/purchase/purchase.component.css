@@ -1,5 +1,5 @@
-.all-page{
-    padding-right: 3rem;
+.container{
+    width: 80vw !important;
 }
 
 h2{
@@ -8,8 +8,6 @@ h2{
     font-family: Segoe UI;
     margin-bottom: 2rem;
 }
-
-
 
 mat-option{
     text-align: center;

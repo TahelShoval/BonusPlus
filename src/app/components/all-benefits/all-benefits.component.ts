@@ -19,6 +19,6 @@ export class AllBenefitsComponent implements OnInit {
   }
 
   purchase(id:number){
-     this.router.navigate(['/private-area-management/'+id]);
+     this.router.navigate(['/payment/'+id]);
   }
 }

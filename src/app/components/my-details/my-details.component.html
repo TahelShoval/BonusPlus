@@ -1,19 +1,24 @@
-<div class="container text-right">
-    <form [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm)">
+<div class="allP text-right">  
+    <div class="container">
+     <form [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm)">
         <div class="row">
-            <div class="col-4 PersonalInformation">
-        <mat-form-field appearance="fill" hideRequiredMarker>
+
+        <div class="col-4 PersonalInformation1">
+            <h2>פרטי חברה</h2>
+            <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>שם חברה</mat-label>
             <input matInput formControlName="company" name="company" required matInput [(ngModel)]="employer.CompanyName">
             <mat-error></mat-error>
         </mat-form-field>
         <br>
+
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>שם מנהל</mat-label>
             <input matInput formControlName="name" name="name" required matInput [(ngModel)]="employer.NameEmployer">
             <mat-error></mat-error>
         </mat-form-field>
         <br>
+
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>פלאפון</mat-label>
             <input matInput formControlName="phone" name="phone" required matInput [(ngModel)]="employer.Phone">
@@ -25,9 +30,10 @@
             <input matInput formControlName="email" name="email" required matInput [(ngModel)]="employer.Email">
             <mat-error></mat-error>
         </mat-form-field>
-    
     </div>
-    <div class="col-4 Moredetails"></div>
+
+    <div class="col-4 Moredetails1">
+    <h2>פרטים נוספים</h2>
         <div formGroupName="address">
             <mat-form-field appearance="fill" hideRequiredMarker>
                 <mat-label>עיר</mat-label>
@@ -47,7 +53,10 @@
                 <mat-error></mat-error>
             </mat-form-field>
         </div>
-        <div class="col-4 logindetails">
+    </div>
+
+        <div class="col-4 logindetails1">
+        <h2>פרטי התחברות</h2>
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>שם משתמש</mat-label>
             <input matInput formControlName="userName" name="userName" required matInput [(ngModel)]="employer.EmployerUserName">
@@ -60,13 +69,16 @@
             <mat-error></mat-error>
         </mat-form-field>
         <br>
-        
-        </div>
-       </div>
+    </div>
+</div>
       
     </form> 
+     
     <div class="row-12 actions-container">
-            <button class="cancel col-3" mat-button (click)="onCancel()" mat-flat-button color="warn">ביטול</button>
-            <button class="submit col-9" mat-button value="send" type="submit">שמירה</button>
+        <button class="cancel col-3" mat-button (click)="onCancel()" mat-flat-button color="warn">ביטול</button>
+        <button class="submit col-9" mat-button value="send" type="submit">שמירה</button>
     </div>
+
+
+
 </div>

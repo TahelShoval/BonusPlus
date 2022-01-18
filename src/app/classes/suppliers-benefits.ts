@@ -6,5 +6,6 @@ export default class SuppliersBenefits {
     public BenefitDetails: string = "";
     public BenefitImage: string = "";
     public Price: number = 0;
+    public CategoryID: number = 0;
 
 }

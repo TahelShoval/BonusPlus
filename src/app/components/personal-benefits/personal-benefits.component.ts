@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import WorkerBenefits from 'src/app/classes/worker-benefits';
 import Worker from 'src/app/classes/worker';
 import { WorkersBenefitsService } from 'src/app/services/workers-benefits.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ApplyBenefitComponent } from '../apply-benefit/apply-benefit.component';
 
 @Component({
   selector: 'app-personal-benefits',
@@ -12,7 +14,17 @@ export class PersonalBenefitsComponent implements OnInit {
 
   workerBenefits: WorkerBenefits[] = [];
   counter = 0;
-  constructor(private workersBenefitsService: WorkersBenefitsService) { }
+  constructor(private workersBenefitsService: WorkersBenefitsService, public dialog: MatDialog) { }
+
+  public openDialog(cupon: number): void {
+    const dialogRef = this.dialog.open(ApplyBenefitComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 
   ngOnInit(): void {
     const workerString = localStorage.getItem('worker');

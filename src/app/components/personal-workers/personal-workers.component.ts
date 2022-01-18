@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Worker from 'src/app/classes/worker';
 import { WorkerService } from 'src/app/services/worker.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -82,9 +82,9 @@ export class PersonalWorkersComponent implements OnInit {
     this.workerService.deleteWorker(row_obj.ID).subscribe(() => window.location.reload());
   }
 
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); 
-    filterValue = filterValue.toLowerCase(); 
-    this.dataSource.filter = filterValue;
-  }
+  // applyFilter(filterValue: string) {
+  //   filterValue = filterValue.trim(); 
+  //   filterValue = filterValue.toLowerCase(); 
+  //   this.dataSource.filter = filterValue;
+  // }
 }
