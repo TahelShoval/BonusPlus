@@ -18,7 +18,8 @@ export class PersonalBenefitsComponent implements OnInit {
 
   public openDialog(cupon: number): void {
     const dialogRef = this.dialog.open(ApplyBenefitComponent, {
-      width: '250px',
+      width: '500px',
+      data: { cupon: cupon }
     });
 
     dialogRef.afterClosed().subscribe(result => {
