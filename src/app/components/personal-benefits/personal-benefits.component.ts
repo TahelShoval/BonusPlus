@@ -16,13 +16,14 @@ export class PersonalBenefitsComponent implements OnInit {
   counter = 0;
   constructor(private workersBenefitsService: WorkersBenefitsService, public dialog: MatDialog) { }
 
-  public openDialog(cupon: number): void {
+  public openDialog(obj: WorkerBenefits): void {
     const dialogRef = this.dialog.open(ApplyBenefitComponent, {
       width: '500px',
-      data: { cupon: cupon }
+      data: { obj: obj }
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      window.location.reload();
       console.log('The dialog was closed');
     });
   }

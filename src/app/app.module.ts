@@ -32,6 +32,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { ApplyBenefitComponent } from './components/apply-benefit/apply-benefit.component';
+import { ShowCuponComponent } from './components/show-cupon/show-cupon.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { ApplyBenefitComponent } from './components/apply-benefit/apply-benefit.
     PaymentComponent,
     PurchaseComponent,
     ApplyBenefitComponent,
+    ShowCuponComponent,
   ],
   imports: [
     BrowserModule,

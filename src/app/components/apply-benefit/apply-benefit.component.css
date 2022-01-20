@@ -1,0 +1,55 @@
+.barcode-box{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+.dotted-border{
+    border: 2px dashed #4c4b51;
+    padding: 5%;
+    margin-top: 10%;
+}
+
+.details{
+    margin-top: -10%;
+    font-size: 20px;
+}
+
+.details1{
+    margin-top: -5%;
+    font-size: 20px;
+}
+
+.numCupon{
+    font-size: 40px;
+    margin-top: -6%;
+    font-weight: bold;
+    padding: 6%;
+}
+
+.all-ben{
+    margin-top: 30px;
+    font-family: Segoe UI;
+    font-size: 1.4rem;
+    background-color: #e6b400;
+    font-weight: bold;
+    width: 200px;
+    height: 45px;
+    transition: 0.2s ease-in-out;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+.ben{
+color: black;
+text-decoration: none;
+}
+
+.paper-plane{
+    width: 40%;
+    height: 40%;
+    margin-top: -8%;
+  
+}

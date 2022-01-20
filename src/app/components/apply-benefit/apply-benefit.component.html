@@ -1,1 +1,27 @@
-<p>{{data.cupon}}</p>
+<div class="continer">
+    <div class="barcode-box">
+        <img class="paper-plane" src="assets\images\paper-plane.png">
+        <br><br><br>
+        <p class="details">
+            קוד ההטבה נשלח בהצלחה
+            <br><br>
+            פרטי ההטבה מחכים לך במייל ובאזור האישי
+        </p>
+
+
+        <div class="dotted-border">
+            <div class="sale-instruction">
+                <br>
+                <p class="details1">
+                    יש להציג את קוד ההטבה במעמד הרכישה
+                    <br><br>
+                </p>
+                <p class="numCupon">{{data.obj.Coupon}}</p>
+                בתוקף עד 31.1.2022
+            </div>
+        </div>
+        <button class="all-ben">
+            <a class="ben" href="http://localhost:4200/private-area-worker/personal-benefits">בחזרה להטבות</a>
+        </button>
+    </div>
+</div>

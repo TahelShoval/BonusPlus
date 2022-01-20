@@ -71,7 +71,7 @@
         <div class="row">
             <h2>תשלום</h2>
             <div class="container">
-                <div class="row">
+                <div class="row sum">
                     <div class="col">
                         {{this.selection.selected.length*benefit.Price}} :סה"כ לתשלום
                     </div>
@@ -102,10 +102,12 @@
                             <mat-error>{{getCardNumberError()}}</mat-error>
                         </mat-form-field>
                     </div>
-                    <div class="row">
+                    <div class="row num1">
                         <mat-form-field appearance="fill" hideRequiredMarker class="col">
                             <mat-label>חודש</mat-label>
-                            <mat-select>
+                            <input matInput formControlName="expireMonth" name="expireMonth" required>
+                            <mat-error>{{getExpireMonthError()}}</mat-error>
+                            <!-- <mat-select>
                                 <mat-option value="1">1</mat-option>
                                 <mat-option value="2">2</mat-option>
                                 <mat-option value="3">3</mat-option>
@@ -118,11 +120,13 @@
                                 <mat-option value="10">10</mat-option>
                                 <mat-option value="11">11</mat-option>
                                 <mat-option value="12">12</mat-option>
-                              </mat-select>
+                              </mat-select> -->
                         </mat-form-field>
                         <mat-form-field appearance="fill" hideRequiredMarker class="col">
                             <mat-label>שנה</mat-label>
-                            <mat-select>
+                            <input matInput formControlName="expireYear" name="expireYear" required>
+                            <mat-error>{{getExpireYearError()}}</mat-error>
+                            <!-- <mat-select>
                                 <mat-option value="2022">2022</mat-option>
                                 <mat-option value="2023">2023</mat-option>
                                 <mat-option value="2024">2024</mat-option>
@@ -134,7 +138,7 @@
                                 <mat-option value="2030">2030</mat-option>
                                 <mat-option value="2031">2031</mat-option>
                                 <mat-option value="2032">2032</mat-option>
-                              </mat-select>
+                              </mat-select> -->
                         </mat-form-field>
                         <mat-form-field appearance="fill" hideRequiredMarker class="col">
                             <mat-label>CVV</mat-label>
@@ -142,7 +146,6 @@
                             <mat-error>{{getCvvError()}}</mat-error>
                         </mat-form-field>
                     </div>
-
 
                     <button class="submit" value="send" type="submit">תשלום</button>
                     <!-- <div class="alert alert-danger" role="alert" *ngIf="isFormInvalid">

@@ -4,9 +4,22 @@
 
 h2{
     text-align: right;
-    font-size: 1.5rem;  
+    font-size: 1.6rem;
     font-family: Segoe UI;
     margin-bottom: 2rem;
+    margin-top: 3%;
+}
+
+.sum{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: -5%;
+}
+
+.col{
+    margin-top: 4%;
+
 }
 
 mat-option{
@@ -59,8 +72,13 @@ th{
     font-size: 15px;
 }
 
+.num1{
+    margin-top: -4%;
+}
+
+
 .submit{
-    margin-top: 70px;
+    margin-top: 20px;
     font-family: Segoe UI;
     color: #1b1a1a;
     font-size: 1.2rem;
@@ -73,6 +91,7 @@ th{
     border-radius: 5px;
     border: none;
     box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+    margin-bottom: 4%;
 }
 
 button:hover{

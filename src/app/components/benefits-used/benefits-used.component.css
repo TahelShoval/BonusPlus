@@ -16,6 +16,11 @@ mat-card{
     display: block;
     overflow: inherit;
     width: 100%;
+    transition: all 0.3s ease-out;
+}
+
+mat-card:hover{
+    opacity: 0.3;
 }
 
 .logo-container{
@@ -43,3 +48,28 @@ mat-card-content{
     height: 4rem;
     padding: inherit;
 }
+
+.action{
+	padding: 15px;
+	text-align: center;
+    margin-top: -225px;
+    margin-left: 60px;
+    position: absolute;
+	font-size: 25px;
+    color: #fff;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transform: translateY(30px);
+	opacity: 0;
+	transition: all 0.3s ease-out 0.2s;
+}
+
+p{
+    border-bottom: 1px #fff solid;
+    padding-bottom: 5px;
+}
+
+.card-container:hover .action{
+    opacity: 1;
+    transform: translateY(0px);
+} 

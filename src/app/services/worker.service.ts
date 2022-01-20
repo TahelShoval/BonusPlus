@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import Worker from '../classes/worker';
+import WorkersBenefits from '../classes/workers-benefits';
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +28,12 @@ export class WorkerService {
     return this.http.get<Worker>(`${this.url}GetWorkerByEmail/` + email);
   }
 
-  public sendEmail(email: string) {
-    this.http.delete(`${this.url}sendEmail/` + email).subscribe(() => console.log('email sent'));
+  public passwordReset(email: string) {
+    this.http.delete(`${this.url}passwordReset/` + email).subscribe(() => console.log('email sent'));
+  }
+
+  public sendCoupon(obj: WorkersBenefits): Observable<any> {
+    return this.http.put(`${this.url}SendCoupon/` , obj);
   }
 
   public deleteWorker(id: number): Observable<any> {

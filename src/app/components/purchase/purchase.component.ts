@@ -5,8 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import Employer from 'src/app/classes/employer';
 import SuppliersBenefits from 'src/app/classes/suppliers-benefits';
 import Worker from 'src/app/classes/worker';
+import WorkersBenefits from 'src/app/classes/workers-benefits';
 import { SuppliersBenefitsService } from 'src/app/services/suppliers-benefits.service';
 import { WorkerService } from 'src/app/services/worker.service';
+import { WorkersBenefitsService } from 'src/app/services/workers-benefits.service';
 
 @Component({
   selector: 'app-purchase',
@@ -16,6 +18,7 @@ import { WorkerService } from 'src/app/services/worker.service';
 export class PurchaseComponent implements OnInit {
 
   benefit: SuppliersBenefits = new SuppliersBenefits();
+  workerBenefit: WorkersBenefits = new WorkersBenefits();
   id: number = 0;
 
   paymentForm = new FormGroup({});
@@ -26,7 +29,7 @@ export class PurchaseComponent implements OnInit {
   employer: Employer = new Employer();
   selection = new SelectionModel<Worker>(true, []);
 
-  constructor(private workerService: WorkerService, private activatedRoute: ActivatedRoute, private suppliersBenefitsService: SuppliersBenefitsService) { }
+  constructor(private workerService: WorkerService, private activatedRoute: ActivatedRoute, private suppliersBenefitsService: SuppliersBenefitsService, private workersBenefitsService: WorkersBenefitsService) { }
 
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(data => {
@@ -55,6 +58,18 @@ export class PurchaseComponent implements OnInit {
   }
 
   onSubmit(paymentForm: FormGroup) {
+    if (!paymentForm.valid) {
+      console.log(this.selection.selected);
+      this.selection.selected.forEach(obj => {
+        this.workerBenefit.WorkerID = obj.ID;
+        this.workerBenefit.SupplierBenefitID = this.benefit.ID;
+        this.workerBenefit.BenefitStatus = 0;
+        this.workerBenefit.Coupon = 123;
+        this.workersBenefitsService.addWorkerBenefit(this.workerBenefit).subscribe(x => {
+          console.log('add');
+        })
+      })
+    }
   }
 
   getNameCardHolderError() {
@@ -89,7 +104,7 @@ export class PurchaseComponent implements OnInit {
 
   masterToggle() {
     this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.forEach((row:any) => this.selection.select(row));
+      this.selection.clear() :
+      this.dataSource.forEach((row: any) => this.selection.select(row));
   }
 }

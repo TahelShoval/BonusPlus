@@ -33,7 +33,7 @@ export class ForgetPasswordComponent implements OnInit {
       this.workerservice.getWorkerByEmail(newEmail).subscribe(res => {
         var worker = res;
         if (worker != null) {
-          this.workerservice.sendEmail(newEmail);
+          this.workerservice.passwordReset(newEmail);
           alert("הסיסמא נשלחה");
         }
         else {

@@ -1,6 +1,6 @@
 <div class="container row">
     <div *ngFor="let item of workerBenefits" class="col-3">
-        <div class="card-container">
+        <div (click)="openDialog(item)" class="card-container">
             <mat-card class="text-center">
                 <mat-card-header>
                     <div mat-card-avatar class="logo-container">
@@ -16,6 +16,9 @@
                     </div>
                 </mat-card-content>
             </mat-card>
+            <div class="action">
+                <p>לצפייה בקוד</p>
+            </div>
         </div>
     </div>
 </div>

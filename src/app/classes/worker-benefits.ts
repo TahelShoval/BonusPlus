@@ -1,6 +1,7 @@
 export default class WorkerBenefits {
 
     public ID: number = 0;
+    public SupplierBenefitID: number = 0;
     public SupplierName: string = "";
     public Supplierlogo: string = "";
     public BenefitDetails: string = "";
