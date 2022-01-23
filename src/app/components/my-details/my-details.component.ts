@@ -4,6 +4,7 @@ import Address from 'src/app/classes/address';
 import Employer from 'src/app/classes/employer';
 import { AddressService } from 'src/app/services/address.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { EmployerService } from 'src/app/services/employer.service';
 
 @Component({
   selector: 'app-my-details',
@@ -18,13 +19,15 @@ export class MyDetailsComponent implements OnInit {
   updateEmployer: Employer = new Employer();
   updateAddress: Address = new Address();
 
-  constructor(private addressService: AddressService) { }
+  constructor(private addressService: AddressService, private employerService: EmployerService) { }
 
   ngOnInit(): void {
-    const employer = localStorage.getItem('employer');
-    if (employer)
-      this.employer = JSON.parse(employer);
-    this.addressService.getAddressById(this.employer.AddressID).subscribe(res => { this.address = res; });
+    const employerID = localStorage.getItem('employerID');
+    if (employerID)
+      this.employerService.getEmployerById(Number(employerID)).subscribe(res => {
+        this.employer = res;
+        this.addressService.getAddressById(this.employer.AddressID).subscribe(res => { this.address = res; });
+      })
     this.updateForm = new FormGroup({
       'company': new FormControl("", Validators.required),
       'name': new FormControl("", Validators.required),

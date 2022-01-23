@@ -1,6 +1,8 @@
 import { HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { EmployerService } from 'src/app/services/employer.service';
 import { WorkerService } from 'src/app/services/worker.service';
 
 @Component({
@@ -12,7 +14,7 @@ export class ForgetPasswordComponent implements OnInit {
 
   resetPasswordForm = new FormGroup({});
 
-  constructor(private workerservice: WorkerService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { type: string }, private workerservice: WorkerService, private employerService:EmployerService) { }
   ngOnInit(): void {
     this.resetPasswordForm = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email]),
@@ -30,16 +32,31 @@ export class ForgetPasswordComponent implements OnInit {
       var newEmail = email;
       newEmail = newEmail.replace(/\./gi, "{}");
       newEmail = newEmail.replace(/\@/gi, "[]");
-      this.workerservice.getWorkerByEmail(newEmail).subscribe(res => {
-        var worker = res;
-        if (worker != null) {
-          this.workerservice.passwordReset(newEmail);
-          alert("הסיסמא נשלחה");
-        }
-        else {
-          alert("כתובת מייל לא קיימת במערכת");
-        }
-      })
+      if (this.data.type == "worker") {
+        this.workerservice.getWorkerByEmail(newEmail).subscribe(res => {
+          var worker = res;
+          if (worker != null) {
+            this.workerservice.passwordReset(newEmail);
+            alert("הסיסמא נשלחה");
+          }
+          else {
+            alert("כתובת מייל לא קיימת במערכת");
+          }
+        })
+      }
+      if (this.data.type == "management") {
+        this.employerService.getEmployerByEmail(newEmail).subscribe(res => {
+          var employer = res;
+          if (employer != null) {
+            this.employerService.passwordReset(newEmail);
+            alert("הסיסמא נשלחה");
+          }
+          else {
+            alert("כתובת מייל לא קיימת במערכת");
+          }
+        })
+      }
+
     }
   }
 

@@ -54,7 +54,8 @@ export class SignInWorkerComponent implements OnInit {
   public openDialog(): void {
     
     const dialogRef = this.dialog.open(ForgetPasswordComponent, {
-      width: '370px', height: '400px'
+      width: '370px', height: '400px',
+      data: { type: "worker" }
     });
 
     dialogRef.afterClosed().subscribe((result) => {

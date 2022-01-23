@@ -21,8 +21,16 @@ export class EmployerService {
     return this.http.get<Employer>(`${this.url}GetEmployerByEmail/` + email);
   }
 
+  public getEmployerById(id: number): Observable<Employer> {
+    return this.http.get<Employer>(`${this.url}GetEmployerById/` + id);
+  }
+
   public createNewEmployer(employer: Employer) {
     return this.http.post<Employer>(`${this.url}PostEmployer`, employer).subscribe(x => { });
+  }
+
+  public passwordReset(email: string) {
+    this.http.delete(`${this.url}passwordReset/` + email).subscribe(() => console.log('email sent'));
   }
 
   public updateEmployer(employer: Employer) {

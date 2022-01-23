@@ -19,7 +19,7 @@ mat-panel-title{
     padding-right: 3.5rem;
 }
 
-p{
+.category{
     text-align: right;
     font-family: Segoe UI; 
     font: bold;   
@@ -27,11 +27,14 @@ p{
 }
 
 a{
+    text-decoration: none;
     text-align: right;
     font-family: Segoe UI; 
     color: #1b1a1a; 
-    font: bold;   
-    font-size:22px;
+    font-size:20px;
+    display: block;
+    height: 50px;
+    padding: 15px 10px;
 }
 
 h1{

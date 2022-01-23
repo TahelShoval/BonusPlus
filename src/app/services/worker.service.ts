@@ -23,6 +23,10 @@ export class WorkerService {
   public getWorkerByUserName(userName: string): Observable<Worker> {
     return this.http.get<Worker>(`${this.url}GetWorkerByUserName/` + userName);
   }
+  
+  public getWorkerById(id: number): Observable<Worker> {
+    return this.http.get<Worker>(`${this.url}GetWorkerById/` + id);
+  }
 
   public getWorkerByEmail(email: string): Observable<Worker> {
     return this.http.get<Worker>(`${this.url}GetWorkerByEmail/` + email);

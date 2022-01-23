@@ -26,7 +26,7 @@ export class AuthenticationService {
         this.isAuthenticated = true;
         this.typeEntry = "worker";
         this.router.navigate(['/private-area-worker/personal-benefits']);
-        localStorage.setItem('worker', JSON.stringify(this.worker));
+        localStorage.setItem('workerID', JSON.stringify(this.worker.ID));
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('typeEntry', 'worker');
         console.log("worker");
@@ -43,7 +43,7 @@ export class AuthenticationService {
         this.isAuthenticated = true;
         this.typeEntry = "employer";
         this.router.navigate(['/private-area-management/all-benefits/0']);
-        localStorage.setItem('employer', JSON.stringify(this.employer));
+        localStorage.setItem('employerID', JSON.stringify(this.employer.EmployerID));
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('typeEntry', 'employer');
         console.log("employer");

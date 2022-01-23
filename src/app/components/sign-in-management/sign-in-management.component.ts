@@ -55,7 +55,8 @@ export class SignInManagementComponent implements OnInit {
 
   public openDialog(): void {
     const dialogRef = this.dialog.open(ForgetPasswordComponent, {
-      width: '350px', height: '400px'
+      width: '350px', height: '400px',
+      data: { type: "management" }
     });
 
     dialogRef.afterClosed().subscribe((result) => {

@@ -16,11 +16,12 @@
     font-size: 20px;
 }
 
-.numCupon{
+.show-c{
     font-size: 40px;
     margin-top: -6%;
     font-weight: bold;
     padding: 6%;
+    margin-top: -5%;
 }
 
 .all-ben{

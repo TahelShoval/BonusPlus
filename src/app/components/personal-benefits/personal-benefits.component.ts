@@ -4,6 +4,7 @@ import Worker from 'src/app/classes/worker';
 import { WorkersBenefitsService } from 'src/app/services/workers-benefits.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ApplyBenefitComponent } from '../apply-benefit/apply-benefit.component';
+import { WorkerService } from 'src/app/services/worker.service';
 
 @Component({
   selector: 'app-personal-benefits',
@@ -14,7 +15,7 @@ export class PersonalBenefitsComponent implements OnInit {
 
   workerBenefits: WorkerBenefits[] = [];
   counter = 0;
-  constructor(private workersBenefitsService: WorkersBenefitsService, public dialog: MatDialog) { }
+  constructor(private workersBenefitsService: WorkersBenefitsService, public dialog: MatDialog, private workerService: WorkerService) { }
 
   public openDialog(obj: WorkerBenefits): void {
     const dialogRef = this.dialog.open(ApplyBenefitComponent, {
@@ -29,15 +30,17 @@ export class PersonalBenefitsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const workerString = localStorage.getItem('worker');
-    if (workerString) {
-      const workerObj: Worker = JSON.parse(workerString);
-      this.workersBenefitsService.getSuppliersBenefitByWorkerId(workerObj.ID).subscribe(res => {
-        res.forEach(element => {
-          if (element.BenefitStatus == 0)
-            this.workerBenefits[this.counter++] = element;
+    const workerid = localStorage.getItem('workerID');
+    if (workerid) {
+      this.workerService.getWorkerById(Number(workerid)).subscribe(res => {
+        this.workersBenefitsService.getSuppliersBenefitByWorkerId(res.EmployerID).subscribe(res => {
+          res.forEach(element => {
+            if (element.BenefitStatus == 0)
+              this.workerBenefits[this.counter++] = element;
+          });
         });
-      });
+      })
+
     }
   }
 }

@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 import Employer from 'src/app/classes/employer';
 import { MatTable } from '@angular/material/table';
+import { EmployerService } from 'src/app/services/employer.service';
 
 
 @Component({
@@ -21,16 +22,18 @@ export class PersonalWorkersComponent implements OnInit {
   worker: Worker = new Worker();
   employer: Employer = new Employer();
 
-  constructor(private workerService: WorkerService, public dialog: MatDialog) { }
+  constructor(private workerService: WorkerService, public dialog: MatDialog, private employerService: EmployerService) { }
 
   ngOnInit(): void {
-    const employer = localStorage.getItem('employer');
-    if (employer)
-      this.employer = JSON.parse(employer);
-    this.workerService.getWorkersByEmployerId(this.employer.EmployerID).subscribe(res => {
-      this.workers = res;
-      this.dataSource = [...this.workers];
-    })
+    const employerID = localStorage.getItem('employerID');
+    if (employerID)
+      this.employerService.getEmployerById(Number(employerID)).subscribe(res => {
+        this.employer = res;
+        this.workerService.getWorkersByEmployerId(this.employer.EmployerID).subscribe(res => {
+          this.workers = res;
+          this.dataSource = [...this.workers];
+        })
+      })
   }
 
   openDialog(action: any, obj: any) {

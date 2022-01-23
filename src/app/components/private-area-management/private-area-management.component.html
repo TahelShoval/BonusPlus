@@ -17,7 +17,7 @@
 
                 </mat-expansion-panel-header>
                 <div *ngFor="let item of categories" class="category-container">
-                    <p (click)="selectCategory(item.ID)">{{item.category}}</p>
+                    <a class="category" href='/private-area-management/all-benefits/{{item.ID}}'>{{item.category}}</a>
                 </div>
             </mat-expansion-panel>
 
