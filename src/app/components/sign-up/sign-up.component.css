@@ -20,8 +20,9 @@ h1{
     font-size: 35px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #e6b400;
-    font: bolder;
-    padding-top:2%;    
+    font-weight: bold;
+    padding-top:2%;   
+    margin-bottom: 60px; 
 }
 
 h2{

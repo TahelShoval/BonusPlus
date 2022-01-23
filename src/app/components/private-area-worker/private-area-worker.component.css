@@ -6,11 +6,12 @@
 }
 
 a{
+    text-decoration: none;
     text-align: right;
     font-family: Segoe UI; 
     color: #1b1a1a; 
-    font: bold;   
-    font-size:18px ;
+    font-size:20px;
+    margin-bottom: 20px;
 }
 
 h1{
@@ -24,4 +25,5 @@ mat-divider{
 
 .side-nav{
     border-left: 1px solid #c2c2c2;
+    text-align: right;;
 }

@@ -42,7 +42,7 @@ export class AuthenticationService {
       if (this.checkEmployerCredentials(signInData)) {
         this.isAuthenticated = true;
         this.typeEntry = "employer";
-        this.router.navigate(['/private-area-management/all-benefits']);
+        this.router.navigate(['/private-area-management/all-benefits/0']);
         localStorage.setItem('employer', JSON.stringify(this.employer));
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('typeEntry', 'employer');

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import Worker from 'src/app/classes/worker';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { WorkerService } from 'src/app/services/worker.service';
+import { Router } from '@angular/router';
+import Category from 'src/app/classes/category';
+import WorkerBenefits from 'src/app/classes/worker-benefits';
+
+import { CategoriesService } from 'src/app/services/categories.service';
 
 @Component({
   selector: 'app-private-area-management',
@@ -11,10 +13,14 @@ import { WorkerService } from 'src/app/services/worker.service';
 export class PrivateAreaManagementComponent implements OnInit {
 
   title: string = "כל ההטבות"
+  categories: Category[] = [];
 
-  constructor() { }
+  constructor(private categoriesService: CategoriesService, private route: Router) { }
 
   ngOnInit(): void {
+    this.categoriesService.getAllCategories().subscribe(res => {
+      this.categories = res;
+    });
   }
 
   changeTitle(n: number) {
@@ -24,6 +30,11 @@ export class PrivateAreaManagementComponent implements OnInit {
       this.title = "פרטי עובדים";
     if (n == 3)
       this.title = "הפרטים שלי";
+  }
+
+  selectCategory(id: number) {
+    this.route.navigate(['private-area-management/all-benefits/' + id]).then(() =>
+      window.location.reload());
   }
 
 }

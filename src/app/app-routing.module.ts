@@ -42,7 +42,7 @@ const routes: Routes = [
     path: "private-area-management",
     component: PrivateAreaManagementComponent,
     children: [
-      { path: "all-benefits", component: AllBenefitsComponent },
+      { path: "all-benefits/:id", component: AllBenefitsComponent },
       { path: "personal-workers", component: PersonalWorkersComponent },
       { path: "my-details", component: MyDetailsComponent }
     ]

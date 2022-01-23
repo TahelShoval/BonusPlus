@@ -70,16 +70,54 @@ ul{
     background-color: rgb(17, 17, 17);
 }
 
-span>a{
-    text-align: right;
-}
-
 i{ 
     font-size: 50px; 
-    color: #e6b400;
-    margin: 20px 100px;
-} 
+    color: #000;
+}  
 
 .header-nav{
     scroll-behavior: smooth !important;
+}
+
+.login-container{
+    margin-top: 10px;
+    background-color: #e6b400;;
+    text-decoration: none;
+    border-radius: 50px;
+    height: 64px;
+    display: inline-flex;
+    align-items: center;
+    overflow:hidden;
+    width: auto;
+    max-width: 64px; 
+    -webkit-transition: max-width 0.5s;
+    transition: max-width 0.5s;
+}
+
+.login-container:hover{
+    max-width: 700px;
+}
+
+.icon {
+    font-size: 16px;
+    margin-right: 15px;
+    padding: 0px 8px;
+    display: flex;
+    align-items: center;
+}
+  
+.text {
+    white-space: nowrap;
+    padding-right: 15px;
+}
+
+.text > a{  
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+    color: #000; 
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
 }

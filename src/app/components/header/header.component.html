@@ -3,25 +3,21 @@
         <div class="left-area col">
             <section class="header-login">
                 <div class="login-container">
-                    <span mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger"
-                        (mouseenter)="menuTrigger.openMenu()">
+                    <span class="icon" mat-icon-button >
                         <i class="fas fa-user-circle"></i>
                     </span>
-                    <mat-menu #menu="matMenu" [overlapTrigger]="false" class="menu" xPosition="before">
-                        <span (mouseleave)="menuTrigger.closeMenu()">
-                            <a *ngIf="!this.isAuthenticated" mat-menu-item
-                                [routerLink]="['/worker-entry']">עובדים</a>
-                            <a *ngIf="!this.isAuthenticated" mat-menu-item
-                                [routerLink]="['/management-entry']">מערכת ניהול</a>
-                            <a *ngIf="!this.isAuthenticated" mat-menu-item [routerLink]="['/sign-up']">הרשמה</a>
-                            <a *ngIf="this.isAuthenticated && this.typeEntry == 'worker'" mat-menu-item
-                                [routerLink]="['/private-area-worker/personal-benefits']">אזור אישי</a>
-                            <a *ngIf="this.isAuthenticated && this.typeEntry == 'employer'" mat-menu-item
-                                [routerLink]="['/private-area-management/all-benefits']">אזור אישי</a>
-                            <a *ngIf="this.isAuthenticated" (click)="logout()" mat-menu-item
-                                [routerLink]="['/main-page']">התנתקות</a>
-                        </span>
-                    </mat-menu>
+                    <span class="text">
+                        <a *ngIf="!this.isAuthenticated" mat-menu-item [routerLink]="['/worker-entry']">עובדים</a>
+                        <a *ngIf="!this.isAuthenticated" mat-menu-item [routerLink]="['/management-entry']">מערכת
+                            ניהול</a>
+                        <a *ngIf="!this.isAuthenticated" mat-menu-item [routerLink]="['/sign-up']">הרשמה</a>
+                        <a *ngIf="this.isAuthenticated && this.typeEntry == 'worker'" mat-menu-item
+                            [routerLink]="['/private-area-worker/personal-benefits']">אזור אישי</a>
+                        <a *ngIf="this.isAuthenticated && this.typeEntry == 'employer'" mat-menu-item
+                            [routerLink]="['/private-area-management/all-benefits']">אזור אישי</a>
+                        <a *ngIf="this.isAuthenticated" (click)="logout()" mat-menu-item
+                            [routerLink]="['/main-page']">התנתקות</a>
+                    </span>
                 </div>
             </section>
         </div>

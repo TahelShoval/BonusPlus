@@ -12,11 +12,13 @@
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         <a (click)="changeTitle(1)" mat-menu-item
-                            [routerLink]="['/private-area-management/all-benefits']">הטבות</a>
+                            [routerLink]="['/private-area-management/all-benefits/0']">הטבות</a>
                     </mat-panel-title>
 
                 </mat-expansion-panel-header>
-                <p>This is the primary content of the panel.</p>
+                <div *ngFor="let item of categories" class="category-container">
+                    <p (click)="selectCategory(item.ID)">{{item.category}}</p>
+                </div>
             </mat-expansion-panel>
 
             <a (click)="changeTitle(2)" mat-menu-item [routerLink]="['/private-area-management/personal-workers']">פרטי

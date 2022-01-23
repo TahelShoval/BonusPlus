@@ -5,12 +5,33 @@
     margin: 0;
 }
 
+mat-expansion-panel{
+    background-color: #dddddd;
+    border: none;
+    box-shadow: none !important;
+}
+
+mat-panel-title{
+    display: block;
+}
+
+.category-container{
+    padding-right: 3.5rem;
+}
+
+p{
+    text-align: right;
+    font-family: Segoe UI; 
+    font: bold;   
+    font-size:15px;
+}
+
 a{
     text-align: right;
     font-family: Segoe UI; 
     color: #1b1a1a; 
     font: bold;   
-    font-size:18px ;
+    font-size:22px;
 }
 
 h1{
