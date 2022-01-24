@@ -37,58 +37,17 @@ export class SignUpComponent implements OnInit {
 
     this.signUpForm = new FormGroup({
       'company': new FormControl("", [Validators.required, Validators.maxLength(20)]),
-      'name': new FormControl(
-        "",
-        [
-          Validators.required,
-          Validators.maxLength(20),
-        ]),
-
+      'name': new FormControl("", [Validators.required, Validators.maxLength(20),]),
       'address': new FormGroup({
         'street': new FormControl("", [Validators.required, Validators.maxLength(20)]),
         'city': new FormControl("", [Validators.required, Validators.maxLength(20)]),
-        'zipCode': new FormControl("",
-          [
-            Validators.required,
-            Validators.minLength(7),
-            Validators.maxLength(7),
-            Validators.pattern("^[0-9]*$")
-          ]),
-
+        'zipCode': new FormControl("", [Validators.required, Validators.minLength(7), Validators.maxLength(7), Validators.pattern("^[0-9]*$")]),
       }),
-      'phone': new FormControl(
-        "",
-        [
-          Validators.required,
-          Validators.minLength(9),
-          Validators.maxLength(10),
-          Validators.pattern("^[0-9]*$")
-        ]),
+      'phone': new FormControl("", [Validators.required, Validators.minLength(9), Validators.maxLength(10), Validators.pattern("^[0-9]*$")]),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'emailConfirm': new FormControl(
-        null,
-        [
-          Validators.required,
-          Validators.email,
-        ]),
-
-      'userName': new FormControl(
-        "",
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(15),
-          Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{8,}')
-
-        ]),
-      'password': new FormControl(
-        "",
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(12),
-          Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{8,}')
-        ]),
+      'emailConfirm': new FormControl(null, [Validators.required, Validators.email,]),
+      'userName': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{8,}')]),
+      'password': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(12), Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{8,}')]),
       'passwordConfirm': new FormControl("", [Validators.required])
     });
 
@@ -133,10 +92,6 @@ export class SignUpComponent implements OnInit {
         })
       });
     })
-  }
-
-  confirm() {
-    return this.signUpForm.get('password') == this.signUpForm.get('passwordConfirm');
   }
 
   //errors
@@ -201,13 +156,8 @@ export class SignUpComponent implements OnInit {
   }
 
   getPasswordConfirmError() {
-    debugger;
-
     return this.signUpForm.get('passwordConfirm')?.hasError('required') ? 'שדה חובה' :
       this.signUpForm.get('passwordConfirm')?.hasError('minlength') ? 'סיסמא חייבת להכיל 8-12 תווים' :
-        this.signUpForm.get('passwordConfirm')?.hasError('maxlength') ? 'סיסמא חייבת להכיל 8-12 תווים' :
-          this.confirm() ? 'fd' : '';
-    //if (password !== confirmPassword) {
-    //this.signUpForm.get('passwordConfirm').setErrors({ NoPassswordMatch: true }
+        this.signUpForm.get('passwordConfirm')?.hasError('maxlength') ? 'סיסמא חייבת להכיל 8-12 תווים' : '';
   }
 }

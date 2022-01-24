@@ -82,6 +82,12 @@ button{
     margin:auto;
 }
 
+.alert{
+    font-family: Segoe UI; 
+    color: red;
+    font-weight: bold; 
+    text-align: center;
+}
 
 
 

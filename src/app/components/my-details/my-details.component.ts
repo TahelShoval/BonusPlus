@@ -13,6 +13,8 @@ import { EmployerService } from 'src/app/services/employer.service';
 })
 export class MyDetailsComponent implements OnInit {
 
+  isFormInvalid = false;
+
   updateForm = new FormGroup({});
   employer: Employer = new Employer();
   address: Address = new Address();
@@ -29,29 +31,28 @@ export class MyDetailsComponent implements OnInit {
         this.addressService.getAddressById(this.employer.AddressID).subscribe(res => { this.address = res; });
       })
     this.updateForm = new FormGroup({
-      'company': new FormControl("", Validators.required),
-      'name': new FormControl("", Validators.required),
+      'company': new FormControl("", [Validators.required, Validators.maxLength(20)]),
+      'name': new FormControl("", [Validators.required, Validators.maxLength(20),]),
       'address': new FormGroup({
-        'street': new FormControl("", Validators.required),
-        'city': new FormControl("", Validators.required),
-        'zipCode': new FormControl("", Validators.required),
+        'street': new FormControl("", [Validators.required, Validators.maxLength(20)]),
+        'city': new FormControl("", [Validators.required, Validators.maxLength(20)]),
+        'zipCode': new FormControl("", [Validators.required, Validators.minLength(7), Validators.maxLength(7), Validators.pattern("^[0-9]*$")]),
       }),
-      'phone': new FormControl(
-        "",
-        [
-          Validators.required,
-          Validators.minLength(10),
-          Validators.maxLength(10),
-          Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$')
-          
-        ]),
+      'phone': new FormControl("", [Validators.required, Validators.minLength(9), Validators.maxLength(10), Validators.pattern("^[0-9]*$")]),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'userName': new FormControl("", Validators.required),
-      'password': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(12)]),
+      'emailConfirm': new FormControl(null, [Validators.required, Validators.email,]),
+      'userName': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{8,}')]),
+      'password': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(12), Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{8,}')]),
+      'passwordConfirm': new FormControl("", [Validators.required])
     });
   }
 
   onSubmit(updateForm: FormGroup) {
+    debugger;
+    if (!updateForm.valid) {
+      this.isFormInvalid = true;
+      return;
+    }
     debugger;
     this.updateAddress.ID = this.address.ID;
     this.updateAddress.City = updateForm.value.address.city;
@@ -66,14 +67,15 @@ export class MyDetailsComponent implements OnInit {
       this.updateEmployer.Phone = this.updateForm.value.Phone;
       this.updateEmployer.EmployerUserName = this.updateForm.value.EmployerUserName;
       this.updateEmployer.EmployerPassword = this.updateForm.value.EmployerPassword;
-      this.employerService.updateEmployer(this.updateEmployer).subscribe(res=>{
+      this.employerService.updateEmployer(this.updateEmployer).subscribe(res => {
         console.log("update")
       })
     });
   }
 
   onCancel() {
-    this.ngOnInit();
+    debugger;
+    window.location.reload();
   }
 
   //errors
@@ -88,23 +90,32 @@ export class MyDetailsComponent implements OnInit {
   }
 
   getCompanyError() {
-    return this.updateForm.get('company')?.hasError('required') ? 'שדה חובה' : '';
+    return this.updateForm.get('company')?.hasError('required') ? 'שדה חובה' :
+      this.updateForm.get('company')?.hasError('maxlength') ? 'לא תקין' : '';
   }
 
   getNameError() {
-    return this.updateForm.get('name')?.hasError('required') ? 'שדה חובה' : '';
+    return this.updateForm.get('name')?.hasError('required') ? 'שדה חובה' :
+      this.updateForm.get('name')?.hasError('maxlength') ? 'לא תקין' : '';
   }
 
   getStreetError() {
-    return this.updateForm.get('address')?.get('street')?.hasError('required') ? 'שדה חובה' : '';
+    return this.updateForm.get('address')?.get('street')?.hasError('required') ? 'שדה חובה' :
+      this.updateForm.get('address')?.get('street')?.hasError('maxlength') ? 'לא תקין' : '';
   }
 
   getCityError() {
-    return this.updateForm.get('address')?.get('city')?.hasError('required') ? 'שדה חובה' : '';
+    return this.updateForm.get('address')?.get('city')?.hasError('required') ? 'שדה חובה' :
+      this.updateForm.get('address')?.get('city')?.hasError('maxlength') ? 'לא תקין' : '';
+
   }
 
   getZipCodeError() {
-    return this.updateForm.get('address')?.get('zipCode')?.hasError('required') ? 'שדה חובה' : '';
+    return this.updateForm.get('address')?.get('zipCode')?.hasError('required') ? 'שדה חובה' :
+      this.updateForm.get('address')?.get('zipCode')?.hasError('minlength') ? 'מספר המיקוד שגוי' :
+        this.updateForm.get('address')?.get('zipCode')?.hasError('maxlength') ? 'מספר המיקוד שגוי' :
+          this.updateForm.get('address')?.get('zipCode')?.hasError('pattern') ? 'מספר המיקוד שגוי' : '';
+
   }
 
   getPhoneError() {
@@ -115,15 +126,23 @@ export class MyDetailsComponent implements OnInit {
   }
 
   getUserNameError() {
-    return this.updateForm.get('userName')?.hasError('required') ? 'שדה חובה' : '';
+    return this.updateForm.get('userName')?.hasError('required') ? 'שדה חובה' :
+      this.updateForm.get('userName')?.hasError('minlength') ? 'צריך להכיל לפחות 8 תווים' :
+        this.updateForm.get('userName')?.hasError('maxlength') ? 'לא תקין' :
+          this.updateForm.get('userName')?.hasError('pattern') ? 'צריך להכיל אותיות באנגלית ומספרים' : '';
   }
 
   getPasswordError() {
-    return this.updateForm.get('password')?.hasError('required') ? 'שדה חובה' : '';
+    return this.updateForm.get('password')?.hasError('required') ? 'שדה חובה' :
+      this.updateForm.get('password')?.hasError('minlength') ? 'סיסמא חייבת להכיל 8-12 תווים' :
+        this.updateForm.get('password')?.hasError('maxlength') ? 'סיסמא חייבת להכיל 8-12 תווים' :
+          this.updateForm.get('password')?.hasError('pattern') ? 'צריך להכיל אותיות באנגלית ומספרים' : '';
   }
 
   getPasswordConfirmError() {
-    return this.updateForm.get('passwordConfirm')?.hasError('required') ? 'שדה חובה' : '';
+    return this.updateForm.get('passwordConfirm')?.hasError('required') ? 'שדה חובה' :
+      this.updateForm.get('passwordConfirm')?.hasError('minlength') ? 'סיסמא חייבת להכיל 8-12 תווים' :
+        this.updateForm.get('passwordConfirm')?.hasError('maxlength') ? 'סיסמא חייבת להכיל 8-12 תווים' : '';
   }
 
 }

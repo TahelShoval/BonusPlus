@@ -58,12 +58,45 @@ export class PurchaseComponent implements OnInit {
       })
 
     this.paymentForm = new FormGroup({
-      'nameCardHolder': new FormControl("", Validators.required),
-      'idCardHolder': new FormControl("", Validators.required),
-      'cardNumber': new FormControl("", Validators.required),
-      'expireMonth': new FormControl("", Validators.required),
+      'nameCardHolder': new FormControl(
+       "", 
+      [Validators.required,
+      Validators.maxLength(20),
+      ]),
+
+      'idCardHolder': new FormControl(
+       "", 
+       [Validators.required,
+        Validators.minLength(9),
+        Validators.maxLength(9),
+        Validators.pattern("^[0-9]*$")
+      ]),
+
+      'cardNumber': new FormControl(
+       "", 
+       [Validators.required,
+        Validators.minLength(16),
+        Validators.maxLength(16),
+        Validators.pattern("^[0-9]*$")
+       ]),
+
+      'expireMonth': new FormControl(
+       "", 
+       [Validators.required,
+        Validators.min(1),
+        Validators.max(12),
+        Validators.pattern("^[0-9]*$")
+      ]),
+
       'expireYear': new FormControl("", Validators.required),
-      'cvv': new FormControl("", Validators.required),
+
+      'cvv': new FormControl(
+       "", 
+      [Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(3),
+        Validators.pattern("^[0-9]*$")
+      ]),
 
     });
   }
@@ -83,19 +116,29 @@ export class PurchaseComponent implements OnInit {
   }
 
   getNameCardHolderError() {
-    return this.paymentForm.get('nameCardHolder')?.hasError('required') ? 'שדה חובה' : '';
+    return this.paymentForm.get('nameCardHolder')?.hasError('required') ? 'שדה חובה' : 
+    this.paymentForm.get('nameCardHolder')?.hasError('maxlength') ? 'מוגבל ל 20 תווים' : '';
   }
 
   getIdCardHolderError() {
-    return this.paymentForm.get('idCardHolder')?.hasError('required') ? 'שדה חובה' : '';
+    return this.paymentForm.get('idCardHolder')?.hasError('required') ? 'שדה חובה' :
+    this.paymentForm.get('idCardHolder')?.hasError('minlength') ? 'לא תקין' :
+    this.paymentForm.get('idCardHolder')?.hasError('maxlength') ? 'לא תקין' :
+    this.paymentForm.get('idCardHolder')?.get('idCardHolder')?.hasError('pattern') ? 'תעודת הזהות אינה תקינה ' : '';
   }
 
   getCardNumberError() {
-    return this.paymentForm.get('cardNumber')?.hasError('required') ? 'שדה חובה' : '';
+    return this.paymentForm.get('cardNumber')?.hasError('required') ? 'שדה חובה' :
+    this.paymentForm.get('cardNumber')?.hasError('minlength') ? 'לא תקין' :
+    this.paymentForm.get('cardNumber')?.hasError('maxlength') ? 'לא תקין' :
+    this.paymentForm.get('cardNumber')?.get('cardNumber')?.hasError('pattern') ? 'מספר הכרטיס הינו מכיל מספרים בלבד' : '';
   }
 
   getExpireMonthError() {
-    return this.paymentForm.get('expireMonth')?.hasError('required') ? 'שדה חובה' : '';
+    return this.paymentForm.get('expireMonth')?.hasError('required') ? 'שדה חובה' :
+    this.paymentForm.get('expireMonth')?.hasError('min') ? 'לא תקין' :
+    this.paymentForm.get('expireMonth')?.hasError('max') ? 'לא תקין' :
+    this.paymentForm.get('expireMonth')?.get('expireMonth')?.hasError('pattern') ? 'בין 1 ל-12' : '';
   }
 
   getExpireYearError() {
@@ -103,7 +146,10 @@ export class PurchaseComponent implements OnInit {
   }
 
   getCvvError() {
-    return this.paymentForm.get('cvv')?.hasError('required') ? 'שדה חובה' : '';
+    return this.paymentForm.get('cvv')?.hasError('required') ? 'שדה חובה' :
+    this.paymentForm.get('cardNumber')?.hasError('minlength') ? 'לא תקין' :
+    this.paymentForm.get('cardNumber')?.hasError('maxlength') ? 'לא תקין' :
+    this.paymentForm.get('cardNumber')?.get('cardNumber')?.hasError('pattern') ? 'מכיל 3 ספרות בלבד' : '';
   }
 
   isAllSelected() {
