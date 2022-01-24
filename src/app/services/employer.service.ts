@@ -26,7 +26,7 @@ export class EmployerService {
   }
 
   public createNewEmployer(employer: Employer) {
-    return this.http.post<Employer>(`${this.url}PostEmployer`, employer).subscribe(x => { });
+    return this.http.post<Employer>(`${this.url}PostEmployer`, employer);
   }
 
   public passwordReset(email: string) {

@@ -57,25 +57,21 @@ button:hover{
     opacity: 0.8;
 }
 
-.form-field{
-    padding: 5px;
-}
 
 input{
     width: 100%;
-}
-
-h1{
-    font: bold;
-}
-
-.help-block{
-    color: rgb(231, 18, 18);
 }
 
 mat-form-field{
     text-align: right;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 15px;
-
+    margin: 5px;
 }
+
+.alert{
+    font-family: Segoe UI; 
+    color: red;
+    font-weight: bold; 
+}
+

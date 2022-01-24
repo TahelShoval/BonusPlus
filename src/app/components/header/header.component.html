@@ -14,7 +14,7 @@
                         <a class="menu-item" *ngIf="this.isAuthenticated && this.typeEntry == 'worker'" mat-menu-item
                             [routerLink]="['/private-area-worker/personal-benefits']">אזור אישי</a>
                         <a class="menu-item" *ngIf="this.isAuthenticated && this.typeEntry == 'employer'" mat-menu-item
-                            [routerLink]="['/private-area-management/all-benefits']">אזור אישי</a>
+                            [routerLink]="['/private-area-management/all-benefits/0']">אזור אישי</a>
                         <a class="menu-item" *ngIf="this.isAuthenticated" (click)="logout()" mat-menu-item
                             [routerLink]="['/main-page']">התנתקות</a>
                     </span>

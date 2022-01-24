@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, PatternValidator, Validators } from '@angular/forms';
 import { AddressService } from 'src/app/services/address.service';
 import { EmployerService } from 'src/app/services/employer.service';
 import Employer from 'src/app/classes/employer';
 import Address from 'src/app/classes/address';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SignInData } from 'src/app/classes/signInData';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -14,38 +19,89 @@ export class SignUpComponent implements OnInit {
   isLinear = false;
   isEditable = false;
 
+  isFormInvalid = false;
+
   signUpForm = new FormGroup({});
   address = new Address();
   a = new Address();
 
-  constructor(private addressService: AddressService, private employerService: EmployerService, private _formBuilder: FormBuilder) { }
+  constructor(
+    private addressService: AddressService,
+    private employerService: EmployerService,
+    private snackBar: MatSnackBar,
+    private route: Router,
+    private authenticationService: AuthenticationService) { }
 
-  isFormInvalid = false;
 
   ngOnInit(): void {
 
     this.signUpForm = new FormGroup({
-      'company': new FormControl("", Validators.required),
-      'name': new FormControl("", Validators.required),
+      'company': new FormControl("", [Validators.required, Validators.maxLength(20)]),
+      'name': new FormControl(
+        "",
+        [
+          Validators.required,
+          Validators.maxLength(20),
+        ]),
+
       'address': new FormGroup({
-        'street': new FormControl("", Validators.required),
-        'city': new FormControl("", Validators.required),
-        'zipCode': new FormControl("", Validators.required),
+        'street': new FormControl("", [Validators.required, Validators.maxLength(20)]),
+        'city': new FormControl("", [Validators.required, Validators.maxLength(20)]),
+        'zipCode': new FormControl("",
+          [
+            Validators.required,
+            Validators.minLength(7),
+            Validators.maxLength(7),
+            Validators.pattern("^[0-9]*$")
+          ]),
+
       }),
       'phone': new FormControl(
         "",
         [
           Validators.required,
-          Validators.minLength(10),
+          Validators.minLength(9),
           Validators.maxLength(10),
-          Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$')
+          Validators.pattern("^[0-9]*$")
         ]),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'emailConfirm': new FormControl(null, [Validators.required, Validators.email]),
-      'userName': new FormControl("", Validators.required),
-      'password': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(12)]),
-      'passwordConfirm': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(12)])
+      'emailConfirm': new FormControl(
+        null,
+        [
+          Validators.required,
+          Validators.email,
+        ]),
+
+      'userName': new FormControl(
+        "",
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(15),
+          Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{8,}')
+
+        ]),
+      'password': new FormControl(
+        "",
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(12),
+          Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{8,}')
+        ]),
+      'passwordConfirm': new FormControl("", [Validators.required])
     });
+
+  }
+
+  openSnackBar(userName: string, password: string) {
+    this.snackBar.open('הרישום עבר בהצלחה! ברוכים הבאים', 'סגור', {
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: 10000,
+    });
+    var signInData: SignInData = new SignInData(userName, password, 'employer');
+    this.authenticationService.authenticate(signInData);
 
   }
 
@@ -54,31 +110,33 @@ export class SignUpComponent implements OnInit {
       this.isFormInvalid = true;
       return;
     }
-
     this.address.City = signUpForm.value.address.city;
     this.address.Street = signUpForm.value.address.street;
     this.address.ZipCode = signUpForm.value.address.zipCode;
 
-    this.addressService.createNewAddress(this.address).subscribe(x =>{
+    this.addressService.createNewAddress(this.address).subscribe(x => {
 
-    this.addressService.getAddressByZipCode(this.address.ZipCode).subscribe(res => {
-      this.a = res;
+      this.addressService.getAddressByZipCode(this.address.ZipCode).subscribe(res => {
+        this.a = res;
 
-      const employer = new Employer();
-      employer.CompanyName = signUpForm.value.company;
-      employer.NameEmployer = signUpForm.value.name;
-      employer.Email = signUpForm.value.email;
-      employer.AddressID = res.AddressID;
-      employer.Phone = signUpForm.value.phone;
-      employer.EmployerUserName = signUpForm.value.userName;
-      employer.EmployerPassword = signUpForm.value.password;
-      debugger;
-      this.employerService.createNewEmployer(employer);
-
+        const employer = new Employer();
+        employer.CompanyName = signUpForm.value.company;
+        employer.NameEmployer = signUpForm.value.name;
+        employer.Email = signUpForm.value.email;
+        employer.AddressID = res.AddressID;
+        employer.Phone = signUpForm.value.phone;
+        employer.EmployerUserName = signUpForm.value.userName;
+        employer.EmployerPassword = signUpForm.value.password;
+        debugger;
+        this.employerService.createNewEmployer(employer).subscribe(() => {
+          this.openSnackBar(signUpForm.value.userName, signUpForm.value.password);
+        })
+      });
     })
-      ;
+  }
 
-    })
+  confirm() {
+    return this.signUpForm.get('password') == this.signUpForm.get('passwordConfirm');
   }
 
   //errors
@@ -93,23 +151,32 @@ export class SignUpComponent implements OnInit {
   }
 
   getCompanyError() {
-    return this.signUpForm.get('company')?.hasError('required') ? 'שדה חובה' : '';
+    return this.signUpForm.get('company')?.hasError('required') ? 'שדה חובה' :
+      this.signUpForm.get('company')?.hasError('maxlength') ? 'לא תקין' : '';
   }
 
   getNameError() {
-    return this.signUpForm.get('name')?.hasError('required') ? 'שדה חובה' : '';
+    return this.signUpForm.get('name')?.hasError('required') ? 'שדה חובה' :
+      this.signUpForm.get('name')?.hasError('maxlength') ? 'לא תקין' : '';
   }
 
   getStreetError() {
-    return this.signUpForm.get('address')?.get('street')?.hasError('required') ? 'שדה חובה' : '';
+    return this.signUpForm.get('address')?.get('street')?.hasError('required') ? 'שדה חובה' :
+      this.signUpForm.get('address')?.get('street')?.hasError('maxlength') ? 'לא תקין' : '';
   }
 
   getCityError() {
-    return this.signUpForm.get('address')?.get('city')?.hasError('required') ? 'שדה חובה' : '';
+    return this.signUpForm.get('address')?.get('city')?.hasError('required') ? 'שדה חובה' :
+      this.signUpForm.get('address')?.get('city')?.hasError('maxlength') ? 'לא תקין' : '';
+
   }
 
   getZipCodeError() {
-    return this.signUpForm.get('address')?.get('zipCode')?.hasError('required') ? 'שדה חובה' : '';
+    return this.signUpForm.get('address')?.get('zipCode')?.hasError('required') ? 'שדה חובה' :
+      this.signUpForm.get('address')?.get('zipCode')?.hasError('minlength') ? 'מספר המיקוד שגוי' :
+        this.signUpForm.get('address')?.get('zipCode')?.hasError('maxlength') ? 'מספר המיקוד שגוי' :
+          this.signUpForm.get('address')?.get('zipCode')?.hasError('pattern') ? 'מספר המיקוד שגוי' : '';
+
   }
 
   getPhoneError() {
@@ -120,20 +187,27 @@ export class SignUpComponent implements OnInit {
   }
 
   getUserNameError() {
-    return this.signUpForm.get('userName')?.hasError('required') ? 'שדה חובה' : '';
+    return this.signUpForm.get('userName')?.hasError('required') ? 'שדה חובה' :
+      this.signUpForm.get('userName')?.hasError('minlength') ? 'צריך להכיל לפחות 8 תווים' :
+        this.signUpForm.get('userName')?.hasError('maxlength') ? 'לא תקין' :
+          this.signUpForm.get('userName')?.hasError('pattern') ? 'צריך להכיל אותיות באנגלית ומספרים' : '';
   }
 
   getPasswordError() {
     return this.signUpForm.get('password')?.hasError('required') ? 'שדה חובה' :
-    this.signUpForm.get('passwordConfirm')?.hasError('minlength') ? 'הסיסמא חייבת להכיל בין 8 ל- 12 תווים' :
-    this.signUpForm.get('passwordConfirm')?.hasError('maxlength') ? 'הסיסמא חייבת להכיל בין 8 ל- 12 תווים' :'' ;
-
+      this.signUpForm.get('password')?.hasError('minlength') ? 'סיסמא חייבת להכיל 8-12 תווים' :
+        this.signUpForm.get('password')?.hasError('maxlength') ? 'סיסמא חייבת להכיל 8-12 תווים' :
+          this.signUpForm.get('password')?.hasError('pattern') ? 'צריך להכיל אותיות באנגלית ומספרים' : '';
   }
 
   getPasswordConfirmError() {
-    return this.signUpForm.get('passwordConfirm')?.hasError('required') ? 'שדה חובה' :
-    this.signUpForm.get('passwordConfirm')?.hasError('minlength') ? 'הסיסמא חייבת להכיל בין 8 ל- 12 תווים' :
-    this.signUpForm.get('passwordConfirm')?.hasError('maxlength') ? 'הסיסמא חייבת להכיל בין 8 ל- 12 תווים' :'' ;
-  }
+    debugger;
 
+    return this.signUpForm.get('passwordConfirm')?.hasError('required') ? 'שדה חובה' :
+      this.signUpForm.get('passwordConfirm')?.hasError('minlength') ? 'סיסמא חייבת להכיל 8-12 תווים' :
+        this.signUpForm.get('passwordConfirm')?.hasError('maxlength') ? 'סיסמא חייבת להכיל 8-12 תווים' :
+          this.confirm() ? 'fd' : '';
+    //if (password !== confirmPassword) {
+    //this.signUpForm.get('passwordConfirm').setErrors({ NoPassswordMatch: true }
+  }
 }

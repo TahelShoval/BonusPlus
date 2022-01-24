@@ -14,42 +14,58 @@ export class AuthenticationService {
 
   public worker: Worker = new Worker();
   public employer: Employer = new Employer();
-  isAuthenticated = false;
+  isAuthenticated = true;
   typeEntry = "";
 
   constructor(private workerService: WorkerService, private employerService: EmployerService, private router: Router) { }
 
   authenticate(signInData: SignInData) {
+    debugger;
     if (signInData.getType() == "worker") {
-      this.workerService.getWorkerByUserName(signInData.getUserName()).subscribe(res => { this.worker = res; })
-      if (this.checkWorkerCredentials(signInData)) {
-        this.isAuthenticated = true;
-        this.typeEntry = "worker";
-        this.router.navigate(['/private-area-worker/personal-benefits']);
-        localStorage.setItem('workerID', JSON.stringify(this.worker.ID));
-        localStorage.setItem('isAuthenticated', 'true');
-        localStorage.setItem('typeEntry', 'worker');
-        console.log("worker");
-        console.log(this.worker);
-        return true;
-      }
+      this.workerService.getWorkerByUserName(signInData.getUserName()).subscribe(res => {
+        this.worker = res;
+        if (this.checkWorkerCredentials(signInData)) {
+          this.isAuthenticated = true;
+          this.typeEntry = "worker";
+          this.router.navigate(['/private-area-worker/personal-benefits']);
+          localStorage.setItem('workerID', JSON.stringify(this.worker.ID));
+          localStorage.setItem('isAuthenticated', 'true');
+          localStorage.setItem('typeEntry', 'worker');
+          console.log("worker");
+          console.log(this.worker);
+          return true;
+        }
+        else {
+          this.isAuthenticated = false;
+          this.typeEntry = "";
+          return false;
+        }
+
+      });
       this.isAuthenticated = false;
       this.typeEntry = "";
       return false;
     }
     else if (signInData.getType() == "employer") {
-      this.employerService.getEmployerByUserName(signInData.getUserName()).subscribe(res => { this.employer = res; })
-      if (this.checkEmployerCredentials(signInData)) {
-        this.isAuthenticated = true;
-        this.typeEntry = "employer";
-        this.router.navigate(['/private-area-management/all-benefits/0']);
-        localStorage.setItem('employerID', JSON.stringify(this.employer.EmployerID));
-        localStorage.setItem('isAuthenticated', 'true');
-        localStorage.setItem('typeEntry', 'employer');
-        console.log("employer");
-        console.log(this.employer);
-        return true;
-      }
+      this.employerService.getEmployerByUserName(signInData.getUserName()).subscribe(res => {
+        this.employer = res;
+        if (this.checkEmployerCredentials(signInData)) {
+          this.isAuthenticated = true;
+          this.typeEntry = "employer";
+          this.router.navigate(['/private-area-management/all-benefits/0']);
+          localStorage.setItem('employerID', JSON.stringify(this.employer.EmployerID));
+          localStorage.setItem('isAuthenticated', 'true');
+          localStorage.setItem('typeEntry', 'employer');
+          console.log("employer");
+          console.log(this.employer);
+          return true;
+        }
+        else {
+          this.isAuthenticated = false;
+          this.typeEntry = "";
+          return false;
+        }
+      })
       this.isAuthenticated = false;
       this.typeEntry = "";
       return false;

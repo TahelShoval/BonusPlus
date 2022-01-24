@@ -39,6 +39,7 @@ export class SignInManagementComponent implements OnInit {
   }
 
   onSubmit(signInForm: FormGroup) {
+    debugger;
     if (!signInForm.valid) {
       this.isFormInvalid = true;
       this.areCredentialsInvalid = false;
@@ -49,7 +50,8 @@ export class SignInManagementComponent implements OnInit {
 
   private checkCredentials(signInForm: FormGroup) {
     const signInData = new SignInData(signInForm.value.userName, signInForm.value.password, "employer");
-    if (!this.authenticationService.authenticate(signInData)) {
+    if (this.authenticationService.authenticate(signInData)==false) {
+      debugger;
       this.isFormInvalid = false;
       this.areCredentialsInvalid = true;
     }

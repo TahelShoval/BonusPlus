@@ -33,6 +33,7 @@ export class PersonalWorkersComponent implements OnInit {
           this.dataSource = [...this.workers];
         })
       })
+      console.log(this.workers);
   }
 
   openDialog(action: any, obj: any) {
