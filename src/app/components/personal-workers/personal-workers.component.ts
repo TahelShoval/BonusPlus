@@ -4,7 +4,6 @@ import { WorkerService } from 'src/app/services/worker.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 import Employer from 'src/app/classes/employer';
-import { MatTable } from '@angular/material/table';
 import { EmployerService } from 'src/app/services/employer.service';
 
 

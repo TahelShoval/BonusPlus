@@ -23,8 +23,8 @@ export class SignInManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.signInForm = new FormGroup({
-      'userName': new FormControl("", Validators.required),
-      'password': new FormControl("", Validators.required),
+      'userName': new FormControl("", [Validators.required]),
+      'password': new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(10)]),
     })
   }
 
@@ -33,7 +33,9 @@ export class SignInManagementComponent implements OnInit {
   }
 
   getPasswordError() {
-    return this.signInForm.get('password')?.hasError('required') ? 'שדה חובה' : '';
+    return this.signInForm.get('password')?.hasError('required') ? 'שדה חובה' :
+      this.signInForm.get('password')?.hasError('minlength') ? 'סיסמא לא תקינה' :
+        this.signInForm.get('password')?.hasError('maxlength') ? 'סיסמא לא תקינה' : '';
   }
 
   onSubmit(signInForm: FormGroup) {

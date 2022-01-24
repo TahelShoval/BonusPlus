@@ -124,11 +124,16 @@ export class SignUpComponent implements OnInit {
   }
 
   getPasswordError() {
-    return this.signUpForm.get('password')?.hasError('required') ? 'שדה חובה' : '';
+    return this.signUpForm.get('password')?.hasError('required') ? 'שדה חובה' :
+    this.signUpForm.get('passwordConfirm')?.hasError('minlength') ? 'הסיסמא חייבת להכיל בין 8 ל- 12 תווים' :
+    this.signUpForm.get('passwordConfirm')?.hasError('maxlength') ? 'הסיסמא חייבת להכיל בין 8 ל- 12 תווים' :'' ;
+
   }
 
   getPasswordConfirmError() {
-    return this.signUpForm.get('passwordConfirm')?.hasError('required') ? 'שדה חובה' : '';
+    return this.signUpForm.get('passwordConfirm')?.hasError('required') ? 'שדה חובה' :
+    this.signUpForm.get('passwordConfirm')?.hasError('minlength') ? 'הסיסמא חייבת להכיל בין 8 ל- 12 תווים' :
+    this.signUpForm.get('passwordConfirm')?.hasError('maxlength') ? 'הסיסמא חייבת להכיל בין 8 ל- 12 תווים' :'' ;
   }
 
 }

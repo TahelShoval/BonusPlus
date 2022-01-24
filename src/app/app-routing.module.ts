@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { AllBenefitsComponent } from './components/all-benefits/all-benefits.component';
@@ -15,9 +15,7 @@ import { PrivateAreaWorkerComponent } from './components/private-area-worker/pri
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { SignInManagementComponent } from './components/sign-in-management/sign-in-management.component';
 import { SignInWorkerComponent } from './components/sign-in-worker/sign-in-worker.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { WorkersComponent } from './components/workers/workers.component';
 
 const routes: Routes = [
   { path: "", component: MainPageComponent },
@@ -25,7 +23,6 @@ const routes: Routes = [
   { path: "management-entry", component: SignInManagementComponent },
   { path: "home", component: HomeComponent },
   { path: "companies", component: CompaniesComponent },
-  { path: "workers", component: WorkersComponent },
   { path: "about-us", component: AboutUsComponent },
   { path: "contact", component: ContactComponent },
   { path: "sign-up", component: SignUpComponent },

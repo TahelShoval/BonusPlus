@@ -6,6 +6,7 @@ import Employer from 'src/app/classes/employer';
 import SuppliersBenefits from 'src/app/classes/suppliers-benefits';
 import Worker from 'src/app/classes/worker';
 import WorkersBenefits from 'src/app/classes/workers-benefits';
+import { EmployerService } from 'src/app/services/employer.service';
 import { SuppliersBenefitsService } from 'src/app/services/suppliers-benefits.service';
 import { WorkerService } from 'src/app/services/worker.service';
 import { WorkersBenefitsService } from 'src/app/services/workers-benefits.service';
@@ -18,8 +19,10 @@ import { WorkersBenefitsService } from 'src/app/services/workers-benefits.servic
 export class PurchaseComponent implements OnInit {
 
   benefit: SuppliersBenefits = new SuppliersBenefits();
-  workerBenefit: WorkersBenefits = new WorkersBenefits();
+  workerBenefit: WorkersBenefits[] = [];
+  w: WorkersBenefits = new WorkersBenefits();
   id: number = 0;
+  counter = 0;
 
   paymentForm = new FormGroup({});
 
@@ -29,7 +32,12 @@ export class PurchaseComponent implements OnInit {
   employer: Employer = new Employer();
   selection = new SelectionModel<Worker>(true, []);
 
-  constructor(private workerService: WorkerService, private activatedRoute: ActivatedRoute, private suppliersBenefitsService: SuppliersBenefitsService, private workersBenefitsService: WorkersBenefitsService) { }
+  constructor(
+    private workerService: WorkerService,
+    private activatedRoute: ActivatedRoute,
+    private suppliersBenefitsService: SuppliersBenefitsService,
+    private workersBenefitsService: WorkersBenefitsService,
+    private employerService: EmployerService) { }
 
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(data => {
@@ -39,13 +47,16 @@ export class PurchaseComponent implements OnInit {
       const benefits = res.filter(x => x.ID == this.id);
       this.benefit = benefits[0]
     })
-    const employer = localStorage.getItem('employer');
-    if (employer)
-      this.employer = JSON.parse(employer);
-    this.workerService.getWorkersByEmployerId(this.employer.EmployerID).subscribe(res => {
-      this.workers = res;
-      this.dataSource = [...this.workers];
-    })
+    const employerID = localStorage.getItem('employerID');
+    if (employerID)
+      this.employerService.getEmployerById(Number(employerID)).subscribe(res => {
+        this.employer = res;
+        this.workerService.getWorkersByEmployerId(this.employer.EmployerID).subscribe(res => {
+          this.workers = res;
+          this.dataSource = [...this.workers];
+        })
+      })
+
     this.paymentForm = new FormGroup({
       'nameCardHolder': new FormControl("", Validators.required),
       'idCardHolder': new FormControl("", Validators.required),
@@ -59,16 +70,15 @@ export class PurchaseComponent implements OnInit {
 
   onSubmit(paymentForm: FormGroup) {
     if (!paymentForm.valid) {
-      console.log(this.selection.selected);
       this.selection.selected.forEach(obj => {
-        this.workerBenefit.WorkerID = obj.ID;
-        this.workerBenefit.SupplierBenefitID = this.benefit.ID;
-        this.workerBenefit.BenefitStatus = 0;
-        this.workerBenefit.Coupon = 123;
-        this.workersBenefitsService.addWorkerBenefit(this.workerBenefit).subscribe(x => {
-          console.log('add');
-        })
+        this.w = new WorkersBenefits();
+        debugger;
+        this.w.WorkerID = obj.ID;
+        this.w.SupplierBenefitID = this.benefit.ID;
+        this.workerBenefit.push(this.w);
       })
+      debugger;
+      this.workersBenefitsService.addWorkersBenefits(this.workerBenefit).subscribe(() => console.log("add"));
     }
   }
 

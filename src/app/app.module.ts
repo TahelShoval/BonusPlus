@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './components/header/header.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignInWorkerComponent } from './components/sign-in-worker/sign-in-worker.component';
 import { SignInManagementComponent } from './components/sign-in-management/sign-in-management.component';
 import { FormsModule } from '@angular/forms';
@@ -15,7 +14,6 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { CompaniesComponent } from './components/companies/companies.component';
-import { WorkersComponent } from './components/workers/workers.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { PrivateAreaWorkerComponent } from './components/private-area-worker/private-area-worker.component';
@@ -29,7 +27,6 @@ import { MyDetailsComponent } from './components/my-details/my-details.component
 import { FooterComponent } from './components/footer/footer.component';
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 import { NgImageSliderModule } from 'ng-image-slider';
-import { PaymentComponent } from './components/payment/payment.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { ApplyBenefitComponent } from './components/apply-benefit/apply-benefit.component';
 import { ShowCuponComponent } from './components/show-cupon/show-cupon.component';
@@ -40,13 +37,11 @@ import { ShowCuponComponent } from './components/show-cupon/show-cupon.component
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    SignInComponent,
     SignInWorkerComponent,
     SignInManagementComponent,
     ForgetPasswordComponent,
     SignUpComponent,
     CompaniesComponent,
-    WorkersComponent,
     AboutUsComponent,
     ContactComponent,
     PrivateAreaWorkerComponent,
@@ -59,7 +54,6 @@ import { ShowCuponComponent } from './components/show-cupon/show-cupon.component
     MyDetailsComponent,
     FooterComponent,
     DialogBoxComponent,
-    PaymentComponent,
     PurchaseComponent,
     ApplyBenefitComponent,
     ShowCuponComponent,

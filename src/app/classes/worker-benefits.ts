@@ -8,6 +8,6 @@ export default class WorkerBenefits {
     public BenefitImage: string = "";
     public WorkerID: number = 0;
     public BenefitStatus: number = 0;
-    public Coupon: number = 0;
+    public Coupon: string = "";
 
 }

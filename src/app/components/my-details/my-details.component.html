@@ -8,27 +8,27 @@
             <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>שם חברה</mat-label>
             <input matInput formControlName="company" name="company" required matInput [(ngModel)]="employer.CompanyName">
-            <mat-error></mat-error>
+            <mat-error>{{getCompanyError()}}</mat-error>
         </mat-form-field>
         <br>
 
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>שם מנהל</mat-label>
             <input matInput formControlName="name" name="name" required matInput [(ngModel)]="employer.NameEmployer">
-            <mat-error></mat-error>
+            <mat-error>{{getNameError()}}</mat-error>
         </mat-form-field>
         <br>
 
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>פלאפון</mat-label>
             <input matInput formControlName="phone" name="phone" required matInput [(ngModel)]="employer.Phone">
-            <mat-error></mat-error>
+            <mat-error>{{getPhoneError()}}</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>מייל</mat-label>
             <input matInput formControlName="email" name="email" required matInput [(ngModel)]="employer.Email">
-            <mat-error></mat-error>
+            <mat-error>{{getEmailError()}}</mat-error>
         </mat-form-field>
     </div>
 
@@ -38,19 +38,19 @@
             <mat-form-field appearance="fill" hideRequiredMarker>
                 <mat-label>עיר</mat-label>
                 <input matInput formControlName="city" name="city" required matInput [(ngModel)]="address.City">
-                <mat-error></mat-error>
+                <mat-error>{{getCityError()}}</mat-error>
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill" hideRequiredMarker>
                 <mat-label>רחוב</mat-label>
                 <input matInput formControlName="street" name="street" required matInput [(ngModel)]="address.Street">
-                <mat-error></mat-error>
+                <mat-error>{{getStreetError()}}</mat-error>
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill" hideRequiredMarker>
                 <mat-label>מיקוד</mat-label>
                 <input matInput formControlName="zipCode" name="zipCode" required matInput [(ngModel)]="address.ZipCode">
-                <mat-error></mat-error>
+                <mat-error>{{getZipCodeError()}}</mat-error>
             </mat-form-field>
         </div>
     </div>
@@ -60,13 +60,13 @@
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>שם משתמש</mat-label>
             <input matInput formControlName="userName" name="userName" required matInput [(ngModel)]="employer.EmployerUserName">
-            <mat-error></mat-error>
+            <mat-error>{{getUserNameError()}}</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>סיסמא</mat-label>
             <input matInput formControlName="password" name="password" required matInput [(ngModel)]="employer.EmployerPassword">
-            <mat-error></mat-error>
+            <mat-error>{{getPasswordError()}}</mat-error>
         </mat-form-field>
         <br>
     </div>

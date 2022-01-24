@@ -4,6 +4,6 @@ export default class WorkersBenefits {
     public WorkerID: number = 0;
     public SupplierBenefitID: number = 0;
     public BenefitStatus: number = 0;
-    public Coupon: number = 0;
+    public Coupon: string = "";
 
 }

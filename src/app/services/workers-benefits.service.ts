@@ -20,7 +20,8 @@ export class WorkersBenefitsService {
     return this.http.put<WorkersBenefits>(`${this.url}PutWorkersBenefit`, workersBenefits);
   }
 
-  public addWorkerBenefit(workerBenefit: WorkersBenefits) {
-    return this.http.post<WorkersBenefits>(`${this.url}PostWorkersBenefit`, workerBenefit);
+  public addWorkersBenefits(workerID: WorkersBenefits[]) {
+    debugger;
+    return this.http.post<boolean>(`${this.url}PostWorkersBenefits`, workerID);
   }
 }

@@ -43,6 +43,7 @@ export class MyDetailsComponent implements OnInit {
           Validators.minLength(10),
           Validators.maxLength(10),
           Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$')
+          
         ]),
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'userName': new FormControl("", Validators.required),
@@ -65,11 +66,64 @@ export class MyDetailsComponent implements OnInit {
       this.updateEmployer.Phone = this.updateForm.value.Phone;
       this.updateEmployer.EmployerUserName = this.updateForm.value.EmployerUserName;
       this.updateEmployer.EmployerPassword = this.updateForm.value.EmployerPassword;
+      this.employerService.updateEmployer(this.updateEmployer).subscribe(res=>{
+        console.log("update")
+      })
     });
   }
 
   onCancel() {
     this.ngOnInit();
+  }
+
+  //errors
+  getEmailError() {
+    return this.updateForm.get('email')?.hasError('required') ? 'שדה חובה' :
+      this.updateForm.get('email')?.hasError('email') ? 'כתובת מייל לא תקינה' : '';
+  }
+
+  getEmailConfirmError() {
+    return this.updateForm.get('emailConfirm')?.hasError('required') ? 'שדה חובה' :
+      this.updateForm.get('emailConfirm')?.hasError('emailConfirm') ? 'כתובת מייל לא תקינה' : '';
+  }
+
+  getCompanyError() {
+    return this.updateForm.get('company')?.hasError('required') ? 'שדה חובה' : '';
+  }
+
+  getNameError() {
+    return this.updateForm.get('name')?.hasError('required') ? 'שדה חובה' : '';
+  }
+
+  getStreetError() {
+    return this.updateForm.get('address')?.get('street')?.hasError('required') ? 'שדה חובה' : '';
+  }
+
+  getCityError() {
+    return this.updateForm.get('address')?.get('city')?.hasError('required') ? 'שדה חובה' : '';
+  }
+
+  getZipCodeError() {
+    return this.updateForm.get('address')?.get('zipCode')?.hasError('required') ? 'שדה חובה' : '';
+  }
+
+  getPhoneError() {
+    return this.updateForm.get('phone')?.hasError('required') ? 'שדה חובה' :
+      this.updateForm.get('phone')?.hasError('minlength') ? 'מספר פלאפון שגוי' :
+        this.updateForm.get('phone')?.hasError('maxlength') ? 'מספר פלאפון שגוי' :
+          this.updateForm.get('phone')?.hasError('pattern') ? 'מספר פלאפון שגוי' : '';
+  }
+
+  getUserNameError() {
+    return this.updateForm.get('userName')?.hasError('required') ? 'שדה חובה' : '';
+  }
+
+  getPasswordError() {
+    return this.updateForm.get('password')?.hasError('required') ? 'שדה חובה' : '';
+  }
+
+  getPasswordConfirmError() {
+    return this.updateForm.get('passwordConfirm')?.hasError('required') ? 'שדה חובה' : '';
   }
 
 }
