@@ -34,6 +34,7 @@ export class EmployerService {
   }
 
   public updateEmployer(employer: Employer) {
+    debugger;
     return this.http.put<Employer>(`${this.url}PutEmployer`, employer);
   }
 }

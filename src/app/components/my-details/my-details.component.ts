@@ -40,10 +40,8 @@ export class MyDetailsComponent implements OnInit {
       }),
       'phone': new FormControl("", [Validators.required, Validators.minLength(9), Validators.maxLength(10), Validators.pattern("^[0-9]*$")]),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'emailConfirm': new FormControl(null, [Validators.required, Validators.email,]),
       'userName': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{8,}')]),
       'password': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(12), Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{8,}')]),
-      'passwordConfirm': new FormControl("", [Validators.required])
     });
   }
 
@@ -54,6 +52,7 @@ export class MyDetailsComponent implements OnInit {
       return;
     }
     debugger;
+    this.updateAddress=new Address();
     this.updateAddress.ID = this.address.ID;
     this.updateAddress.City = updateForm.value.address.city;
     this.updateAddress.Street = updateForm.value.address.street;

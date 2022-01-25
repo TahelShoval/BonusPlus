@@ -62,6 +62,7 @@ export class PurchaseComponent implements OnInit {
        "", 
       [Validators.required,
       Validators.maxLength(20),
+      Validators.pattern("^[א-ת]*$"),
       ]),
 
       'idCardHolder': new FormControl(
@@ -88,7 +89,13 @@ export class PurchaseComponent implements OnInit {
         Validators.pattern("^[0-9]*$")
       ]),
 
-      'expireYear': new FormControl("", Validators.required),
+      'expireYear': new FormControl(
+       "", 
+      [Validators.required,
+        Validators.min(2022),
+        Validators.max(2032),
+        Validators.pattern("^[0-9]*$")
+      ]),
 
       'cvv': new FormControl(
        "", 
@@ -117,39 +124,43 @@ export class PurchaseComponent implements OnInit {
 
   getNameCardHolderError() {
     return this.paymentForm.get('nameCardHolder')?.hasError('required') ? 'שדה חובה' : 
-    this.paymentForm.get('nameCardHolder')?.hasError('maxlength') ? 'מוגבל ל 20 תווים' : '';
+    this.paymentForm.get('nameCardHolder')?.hasError('maxlength') ? 'מוגבל ל 20 תווים' :
+    this.paymentForm.get('nameCardHolder')?.hasError('pattern') ? 'לא תקין' :'';
   }
 
   getIdCardHolderError() {
     return this.paymentForm.get('idCardHolder')?.hasError('required') ? 'שדה חובה' :
     this.paymentForm.get('idCardHolder')?.hasError('minlength') ? 'לא תקין' :
     this.paymentForm.get('idCardHolder')?.hasError('maxlength') ? 'לא תקין' :
-    this.paymentForm.get('idCardHolder')?.get('idCardHolder')?.hasError('pattern') ? 'תעודת הזהות אינה תקינה ' : '';
+    this.paymentForm.get('idCardHolder')?.hasError('pattern') ? 'תעודת הזהות אינה תקינה ' : '';
   }
 
   getCardNumberError() {
     return this.paymentForm.get('cardNumber')?.hasError('required') ? 'שדה חובה' :
     this.paymentForm.get('cardNumber')?.hasError('minlength') ? 'לא תקין' :
     this.paymentForm.get('cardNumber')?.hasError('maxlength') ? 'לא תקין' :
-    this.paymentForm.get('cardNumber')?.get('cardNumber')?.hasError('pattern') ? 'מספר הכרטיס הינו מכיל מספרים בלבד' : '';
+    this.paymentForm.get('cardNumber')?.hasError('pattern') ? 'מספר הכרטיס הינו מכיל מספרים בלבד' : '';
   }
 
   getExpireMonthError() {
     return this.paymentForm.get('expireMonth')?.hasError('required') ? 'שדה חובה' :
     this.paymentForm.get('expireMonth')?.hasError('min') ? 'לא תקין' :
     this.paymentForm.get('expireMonth')?.hasError('max') ? 'לא תקין' :
-    this.paymentForm.get('expireMonth')?.get('expireMonth')?.hasError('pattern') ? 'בין 1 ל-12' : '';
+    this.paymentForm.get('expireMonth')?.hasError('pattern') ? 'בין 1 ל-12' : '';
   }
 
   getExpireYearError() {
-    return this.paymentForm.get('expireYear')?.hasError('required') ? 'שדה חובה' : '';
+    return this.paymentForm.get('expireYear')?.hasError('required') ? 'שדה חובה' :
+    this.paymentForm.get('expireYear')?.hasError('min') ? 'התוקף אינו תקין ' :
+    this.paymentForm.get('expireYear')?.hasError('max') ? ' התוקף אינו תקין' :
+    this.paymentForm.get('expireYear')?.hasError('pattern') ? ' אינו תקין' : '';
   }
 
   getCvvError() {
     return this.paymentForm.get('cvv')?.hasError('required') ? 'שדה חובה' :
-    this.paymentForm.get('cardNumber')?.hasError('minlength') ? 'לא תקין' :
-    this.paymentForm.get('cardNumber')?.hasError('maxlength') ? 'לא תקין' :
-    this.paymentForm.get('cardNumber')?.get('cardNumber')?.hasError('pattern') ? 'מכיל 3 ספרות בלבד' : '';
+    this.paymentForm.get('cvv')?.hasError('minlength') ? 'לא תקין' :
+    this.paymentForm.get('cvv')?.hasError('maxlength') ? 'לא תקין' :
+    this.paymentForm.get('cvv')?.get('cvv')?.hasError('pattern') ? 'מכיל 3 ספרות בלבד' : '';
   }
 
   isAllSelected() {
