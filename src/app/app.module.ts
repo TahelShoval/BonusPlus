@@ -30,6 +30,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { ApplyBenefitComponent } from './components/apply-benefit/apply-benefit.component';
 import { ShowCuponComponent } from './components/show-cupon/show-cupon.component';
+import { AuthWorkerGuard } from './guards/auth-worker.guard';
+import { AuthEmployerGuard } from './guards/auth-employer.guard';
 
 
 @NgModule({
@@ -68,7 +70,7 @@ import { ShowCuponComponent } from './components/show-cupon/show-cupon.component
     ReactiveFormsModule,  
     NgImageSliderModule, 
   ],
-  providers: [],
+  providers: [AuthWorkerGuard, AuthEmployerGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

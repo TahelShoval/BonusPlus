@@ -31,8 +31,6 @@ export class AuthenticationService {
           localStorage.setItem('workerID', JSON.stringify(this.worker.ID));
           localStorage.setItem('isAuthenticated', 'true');
           localStorage.setItem('typeEntry', 'worker');
-          console.log("worker");
-          console.log(this.worker);
           return true;
         }
         else {

@@ -7,14 +7,26 @@
                         <i class="fas fa-user-circle"></i>
                     </span>
                     <span class="text">
-                        <a class="menu-item" *ngIf="!this.isAuthenticated" mat-menu-item [routerLink]="['/worker-entry']">עובדים</a>
-                        <a class="menu-item" *ngIf="!this.isAuthenticated" mat-menu-item [routerLink]="['/management-entry']">מערכת
+                        <a class="menu-item" *ngIf="!this.isAuthenticated" mat-menu-item
+                            [routerLink]="['/worker-entry']">עובדים</a>
+                        <a class="menu-item" *ngIf="!this.isAuthenticated" mat-menu-item
+                            [routerLink]="['/management-entry']">מערכת
                             ניהול</a>
-                        <a class="menu-item" *ngIf="!this.isAuthenticated" mat-menu-item [routerLink]="['/sign-up']">הרשמה</a>
+                        <a class="menu-item" *ngIf="!this.isAuthenticated" mat-menu-item
+                            [routerLink]="['/sign-up']">הרשמה</a>
+
                         <a class="menu-item" *ngIf="this.isAuthenticated && this.typeEntry == 'worker'" mat-menu-item
-                            [routerLink]="['/private-area-worker/personal-benefits']">אזור אישי</a>
+                            [routerLink]="['/private-area-worker/personal-benefits']">הטבות</a>
+                        <a class="menu-item" *ngIf="this.isAuthenticated && this.typeEntry == 'worker'" mat-menu-item
+                            [routerLink]="['/private-area-worker/benefits-used']">הטבות שמימשתי</a>
+
                         <a class="menu-item" *ngIf="this.isAuthenticated && this.typeEntry == 'employer'" mat-menu-item
-                            [routerLink]="['/private-area-management/all-benefits/0']">אזור אישי</a>
+                            [routerLink]="['/private-area-management/all-benefits/0']">הטבות</a>
+                        <a class="menu-item" *ngIf="this.isAuthenticated && this.typeEntry == 'employer'" mat-menu-item
+                            [routerLink]="['/private-area-management/personal-workers']">עובדים</a>
+                        <a class="menu-item" *ngIf="this.isAuthenticated && this.typeEntry == 'employer'" mat-menu-item
+                            [routerLink]="['/private-area-management/my-details']">הפרטים שלי</a>
+
                         <a class="menu-item" *ngIf="this.isAuthenticated" (click)="logout()" mat-menu-item
                             [routerLink]="['/main-page']">התנתקות</a>
                     </span>

@@ -33,7 +33,7 @@ export class PersonalWorkersComponent implements OnInit {
           this.dataSource = [...this.workers];
         })
       })
-      console.log(this.workers);
+    console.log(this.workers);
   }
 
   openDialog(action: any, obj: any) {
@@ -85,9 +85,8 @@ export class PersonalWorkersComponent implements OnInit {
     this.workerService.deleteWorker(row_obj.ID).subscribe(() => window.location.reload());
   }
 
-  // applyFilter(filterValue: string) {
-  //   filterValue = filterValue.trim(); 
-  //   filterValue = filterValue.toLowerCase(); 
-  //   this.dataSource.filter = filterValue;
-  // }
+  applyFilter(filterValue: string) {
+    debugger;
+    this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+  }
 }

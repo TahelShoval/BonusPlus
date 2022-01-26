@@ -29,11 +29,6 @@
           <mat-error>{{getEmailError()}}</mat-error>
       </mat-form-field>
       <br>
-      <mat-form-field appearance="fill" hideRequiredMarker>     
-        <mat-label>אישור מייל</mat-label>
-        <input matInput formControlName="emailConfirm" name="emailConfirm" required>
-        <mat-error>{{getEmailConfirmError()}}</mat-error>
-    </mat-form-field>
       </div>
 
       <div class="col-4 Moredetails">
@@ -70,14 +65,16 @@
         <br>
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>סיסמא</mat-label>
-            <input matInput formControlName="password" name="password" required>
+            <input matInput formControlName="password" type="password" name="password" required>
             <mat-error>{{getPasswordError()}}</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill" hideRequiredMarker>
             <mat-label>אישור סיסמא</mat-label>
-            <input matInput formControlName="passwordConfirm" name="passwordConfirm" required>
-            <mat-error>{{getPasswordConfirmError()}}</mat-error>
+            <input matInput formControlName="passwordConfirm" name="passwordConfirm" type="password" required [errorStateMatcher]="matcher">
+            <mat-error *ngIf="signUpForm.hasError('notSame')">
+             סיסמאות לא תואמות 
+            </mat-error>
         </mat-form-field>
       </div>
 

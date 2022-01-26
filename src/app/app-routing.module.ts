@@ -16,6 +16,8 @@ import { PurchaseComponent } from './components/purchase/purchase.component';
 import { SignInManagementComponent } from './components/sign-in-management/sign-in-management.component';
 import { SignInWorkerComponent } from './components/sign-in-worker/sign-in-worker.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { AuthEmployerGuard } from './guards/auth-employer.guard';
+import { AuthWorkerGuard } from './guards/auth-worker.guard';
 
 const routes: Routes = [
   { path: "", component: MainPageComponent },
@@ -29,6 +31,7 @@ const routes: Routes = [
   {
     path: "private-area-worker",
     component: PrivateAreaWorkerComponent,
+    canActivate: [AuthWorkerGuard],
     children: [
       { path: "personal-benefits", component: PersonalBenefitsComponent },
       { path: "benefits-used", component: BenefitsUsedComponent }
@@ -38,13 +41,14 @@ const routes: Routes = [
   {
     path: "private-area-management",
     component: PrivateAreaManagementComponent,
+    canActivate: [AuthEmployerGuard],
     children: [
       { path: "all-benefits/:id", component: AllBenefitsComponent },
       { path: "personal-workers", component: PersonalWorkersComponent },
       { path: "my-details", component: MyDetailsComponent }
     ]
   },
-  { path: "payment/:id", component: PurchaseComponent }
+  { path: "payment/:id", component: PurchaseComponent, canActivate: [AuthEmployerGuard], }
 ];
 
 @NgModule({

@@ -28,6 +28,7 @@ export class MyDetailsComponent implements OnInit {
     if (employerID)
       this.employerService.getEmployerById(Number(employerID)).subscribe(res => {
         this.employer = res;
+        debugger;
         this.addressService.getAddressById(this.employer.AddressID).subscribe(res => { this.address = res; });
       })
     this.updateForm = new FormGroup({
@@ -40,34 +41,32 @@ export class MyDetailsComponent implements OnInit {
       }),
       'phone': new FormControl("", [Validators.required, Validators.minLength(9), Validators.maxLength(10), Validators.pattern("^[0-9]*$")]),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'userName': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{8,}')]),
-      'password': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(12), Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{8,}')]),
+      'userName': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{7,}')]),
+      'password': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(12), Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{7,}')]),
     });
   }
 
   onSubmit(updateForm: FormGroup) {
-    debugger;
     if (!updateForm.valid) {
       this.isFormInvalid = true;
       return;
     }
-    debugger;
     this.updateAddress=new Address();
-    this.updateAddress.ID = this.address.ID;
+    this.updateAddress.AddressID = this.address.AddressID;
     this.updateAddress.City = updateForm.value.address.city;
     this.updateAddress.Street = updateForm.value.address.street;
     this.updateAddress.ZipCode = updateForm.value.address.zipCode;
     this.addressService.updateAddress(this.updateAddress).subscribe(() => {
-      this.updateEmployer.AddressID = this.updateAddress.ID;
+      this.updateEmployer.AddressID = this.updateAddress.AddressID;
       this.updateEmployer.EmployerID = this.employer.EmployerID;
-      this.updateEmployer.CompanyName = this.updateForm.value.CompanyName;
-      this.updateEmployer.NameEmployer = this.updateForm.value.NameEmployer;
-      this.updateEmployer.Email = this.updateForm.value.Email;
-      this.updateEmployer.Phone = this.updateForm.value.Phone;
-      this.updateEmployer.EmployerUserName = this.updateForm.value.EmployerUserName;
-      this.updateEmployer.EmployerPassword = this.updateForm.value.EmployerPassword;
+      this.updateEmployer.CompanyName = this.updateForm.value.company;
+      this.updateEmployer.NameEmployer = this.updateForm.value.name;
+      this.updateEmployer.Email = this.updateForm.value.email;
+      this.updateEmployer.Phone = this.updateForm.value.phone;
+      this.updateEmployer.EmployerUserName = this.updateForm.value.userName;
+      this.updateEmployer.EmployerPassword = this.updateForm.value.password;
       this.employerService.updateEmployer(this.updateEmployer).subscribe(res => {
-        console.log("update")
+        alert("הפרטים עודכנו בהצלחה!")
       })
     });
   }

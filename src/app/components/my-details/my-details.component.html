@@ -73,7 +73,7 @@
                     <br>
                     <mat-form-field appearance="fill" hideRequiredMarker>
                         <mat-label>סיסמא</mat-label>
-                        <input matInput formControlName="password" name="password" required matInput
+                        <input matInput formControlName="password" name="password"  type="password" required matInput
                             [(ngModel)]="employer.EmployerPassword">
                         <mat-error>{{getPasswordError()}}</mat-error>
                     </mat-form-field>
@@ -82,6 +82,8 @@
             </div>
             <div class="row-12 actions-container">
                 <button class="submit col-9" mat-button value="send" type="submit">שמירה</button>
+                <button class="cancel col-3" mat-button mat-flat-button color="warn" (click)="onCancel()">ביטול</button>
+
             </div>
 
             <div class="alert" role="alert" *ngIf="isFormInvalid">
@@ -89,8 +91,6 @@
             </div>
 
         </form>
-
-        <button class="cancel col-3" mat-button mat-flat-button color="warn" (click)="onCancel()">ביטול</button>
 
     </div>
 </div>

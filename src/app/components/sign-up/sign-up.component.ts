@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, PatternValidator, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, PatternValidator, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { AddressService } from 'src/app/services/address.service';
 import { EmployerService } from 'src/app/services/employer.service';
 import Employer from 'src/app/classes/employer';
@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SignInData } from 'src/app/classes/signInData';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { MyErrorStateMatcher } from 'src/app/classes/MyErrorStateMatcher';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class SignUpComponent implements OnInit {
   signUpForm = new FormGroup({});
   address = new Address();
   a = new Address();
+  matcher = new MyErrorStateMatcher();
 
   constructor(
     private addressService: AddressService,
@@ -45,11 +47,10 @@ export class SignUpComponent implements OnInit {
       }),
       'phone': new FormControl("", [Validators.required, Validators.minLength(9), Validators.maxLength(10), Validators.pattern("^[0-9]*$")]),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'emailConfirm': new FormControl(null, [Validators.required, Validators.email,]),
-      'userName': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{8,}')]),
-      'password': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(12), Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{8,}')]),
-      'passwordConfirm': new FormControl("", [Validators.required])
-    });
+      'userName': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{7,}')]),
+      'password': new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(12), Validators.pattern('(?=.*[a-z])(?=.*[0-9])[a-z0-9].{7,}')]),
+      'passwordConfirm': new FormControl("")
+    }, { validators: this.passwordMatchingValidatior });
 
   }
 
@@ -155,9 +156,12 @@ export class SignUpComponent implements OnInit {
           this.signUpForm.get('password')?.hasError('pattern') ? 'צריך להכיל אותיות באנגלית ומספרים' : '';
   }
 
-  getPasswordConfirmError() {
-    return this.signUpForm.get('passwordConfirm')?.hasError('required') ? 'שדה חובה' :
-      this.signUpForm.get('passwordConfirm')?.hasError('minlength') ? 'סיסמא חייבת להכיל 8-12 תווים' :
-        this.signUpForm.get('passwordConfirm')?.hasError('maxlength') ? 'סיסמא חייבת להכיל 8-12 תווים' : '';
-  }
+  passwordMatchingValidatior: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+    const password = control.get('password');
+    const confirmPassword = control.get('passwordConfirm');
+    debugger
+    return password?.value === confirmPassword?.value ? null : { notSame: true };
+  };
+
+
 }
